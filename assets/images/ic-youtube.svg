@@ -1,0 +1,13 @@
+<svg id="ic-yputube" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="38.7" height="37.8" viewBox="0 0 38.7 37.8">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_420" data-name="Rectangle 420" width="38.7" height="37.8" fill="#30a46a"/>
+    </clipPath>
+  </defs>
+  <path id="Path_1557" data-name="Path 1557" d="M89.647,92.978,98.5,87.865l-8.857-5.114Z" transform="translate(-73.985 -68.805)" fill="#30a46a"/>
+  <g id="Group_244" data-name="Group 244" transform="translate(0)">
+    <g id="Group_243" data-name="Group 243" clip-path="url(#clip-path)">
+      <path id="Path_1558" data-name="Path 1558" d="M19.06,0a19.06,19.06,0,1,0,19.06,19.06A19.06,19.06,0,0,0,19.06,0M31.235,25.178a3.182,3.182,0,0,1-2.247,2.247c-1.982.531-9.929.531-9.929.531s-7.947,0-9.929-.531a3.183,3.183,0,0,1-2.247-2.247,33.071,33.071,0,0,1-.531-6.117,33.071,33.071,0,0,1,.531-6.117A3.183,3.183,0,0,1,9.131,10.7c1.982-.531,9.929-.531,9.929-.531s7.947,0,9.929.531a3.182,3.182,0,0,1,2.247,2.247,33.071,33.071,0,0,1,.531,6.117,33.071,33.071,0,0,1-.531,6.117" transform="translate(0.27 -0.001)" fill="#30a46a"/>
+    </g>
+  </g>
+</svg>

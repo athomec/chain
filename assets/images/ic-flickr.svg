@@ -1,0 +1,10 @@
+<svg id="ic-flickr" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37.8" height="37.8" viewBox="0 0 37.8 37.8">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_419" data-name="Rectangle 419" width="37.8" height="37.8" fill="#30a46a"/>
+    </clipPath>
+  </defs>
+  <g id="Group_241" data-name="Group 241" transform="translate(0)" clip-path="url(#clip-path)">
+    <path id="Path_1556" data-name="Path 1556" d="M19.06,0a19.06,19.06,0,1,0,19.06,19.06A19.06,19.06,0,0,0,19.06,0M11.706,24.988a5.928,5.928,0,1,1,5.928-5.928,5.928,5.928,0,0,1-5.928,5.928m14.735,0a5.928,5.928,0,1,1,5.928-5.928,5.928,5.928,0,0,1-5.928,5.928" transform="translate(-0.315 -0.001)" fill="#30a46a"/>
+  </g>
+</svg>

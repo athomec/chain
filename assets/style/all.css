@@ -34,7 +34,7 @@
   --bs-primary-xxxlight: #F8FAFF;
   --bs-primary-xxlight: #E3F3FF;
   --bs-primary-xlight: #F7FCFF;
-  --bs-primary-light: #D5F0FF;
+  --bs-primary-light: #5ED99C;
   --bs-primary: #30A46A;
   --bs-primary-dark: #1074B5;
   --bs-secondary-xlight: #FFFCF6;
@@ -65,7 +65,7 @@
   --bs-primary-xxxlight-rgb: 248, 250, 255;
   --bs-primary-xxlight-rgb: 227, 243, 255;
   --bs-primary-xlight-rgb: 247, 252, 255;
-  --bs-primary-light-rgb: 213, 240, 255;
+  --bs-primary-light-rgb: 94, 217, 156;
   --bs-primary-rgb: 48, 164, 106;
   --bs-primary-dark-rgb: 16, 116, 181;
   --bs-secondary-xlight-rgb: 255, 252, 246;
@@ -2916,19 +2916,19 @@ textarea.form-control-lg {
 
 .btn-primary-light {
   --bs-btn-color: #000;
-  --bs-btn-bg: #D5F0FF;
-  --bs-btn-border-color: #D5F0FF;
+  --bs-btn-bg: #5ED99C;
+  --bs-btn-border-color: #5ED99C;
   --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: #dbf2ff;
-  --bs-btn-hover-border-color: #d9f2ff;
-  --bs-btn-focus-shadow-rgb: 181, 204, 217;
+  --bs-btn-hover-bg: #76dfab;
+  --bs-btn-hover-border-color: #6edda6;
+  --bs-btn-focus-shadow-rgb: 80, 184, 133;
   --bs-btn-active-color: #000;
-  --bs-btn-active-bg: #ddf3ff;
-  --bs-btn-active-border-color: #d9f2ff;
+  --bs-btn-active-bg: #7ee1b0;
+  --bs-btn-active-border-color: #6edda6;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #000;
-  --bs-btn-disabled-bg: #D5F0FF;
-  --bs-btn-disabled-border-color: #D5F0FF; }
+  --bs-btn-disabled-bg: #5ED99C;
+  --bs-btn-disabled-border-color: #5ED99C; }
 
 .btn-primary {
   --bs-btn-color: #000;
@@ -3441,24 +3441,24 @@ textarea.form-control-lg {
       /*filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) primaryness(402%) contrast(102%);*/ }
 
 .btn-outline-primary-light {
-  --bs-btn-color: #D5F0FF;
-  --bs-btn-border-color: #D5F0FF;
+  --bs-btn-color: #5ED99C;
+  --bs-btn-border-color: #5ED99C;
   --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: #D5F0FF;
-  --bs-btn-hover-border-color: #D5F0FF;
-  --bs-btn-focus-shadow-rgb: 213, 240, 255;
+  --bs-btn-hover-bg: #5ED99C;
+  --bs-btn-hover-border-color: #5ED99C;
+  --bs-btn-focus-shadow-rgb: 94, 217, 156;
   --bs-btn-active-color: #000;
-  --bs-btn-active-bg: #D5F0FF;
-  --bs-btn-active-border-color: #D5F0FF;
+  --bs-btn-active-bg: #5ED99C;
+  --bs-btn-active-border-color: #5ED99C;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #D5F0FF;
+  --bs-btn-disabled-color: #5ED99C;
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #D5F0FF;
+  --bs-btn-disabled-border-color: #5ED99C;
   --bs-gradient: none;
   /*background: lighten($color: $value, $amount: 55%);*/
   /*hover前底色同色系*/
   background: #fff;
-  color: #D5F0FF; }
+  color: #5ED99C; }
   .btn-outline-primary-light:hover {
     color: #fff; }
     .btn-outline-primary-light:hover img {
@@ -9882,7 +9882,7 @@ textarea.form-control-lg {
   --bs-primary-xxxlight: #F8FAFF;
   --bs-primary-xxlight: #E3F3FF;
   --bs-primary-xlight: #F7FCFF;
-  --bs-primary-light: #D5F0FF;
+  --bs-primary-light: #5ED99C;
   --bs-primary: #30A46A;
   --bs-primary-dark: #1074B5;
   --bs-secondary-xlight: #FFFCF6;
@@ -9913,7 +9913,7 @@ textarea.form-control-lg {
   --bs-primary-xxxlight-rgb: 248, 250, 255;
   --bs-primary-xxlight-rgb: 227, 243, 255;
   --bs-primary-xlight-rgb: 247, 252, 255;
-  --bs-primary-light-rgb: 213, 240, 255;
+  --bs-primary-light-rgb: 94, 217, 156;
   --bs-primary-rgb: 48, 164, 106;
   --bs-primary-dark-rgb: 16, 116, 181;
   --bs-secondary-xlight-rgb: 255, 252, 246;
@@ -10091,7 +10091,7 @@ textarea.form-control-lg {
 
 .text-bg-primary-light {
   color: #000 !important;
-  background-color: RGBA(213, 240, 255, var(--bs-bg-opacity, 1)) !important; }
+  background-color: RGBA(94, 217, 156, var(--bs-bg-opacity, 1)) !important; }
 
 .text-bg-primary {
   color: #000 !important;
@@ -10233,9 +10233,9 @@ textarea.form-control-lg {
   -webkit-text-decoration-color: RGBA(var(--bs-primary-light-rgb), var(--bs-link-underline-opacity, 1)) !important;
           text-decoration-color: RGBA(var(--bs-primary-light-rgb), var(--bs-link-underline-opacity, 1)) !important; }
   .link-primary-light:hover, .link-primary-light:focus {
-    color: RGBA(221, 243, 255, var(--bs-link-opacity, 1)) !important;
-    -webkit-text-decoration-color: RGBA(221, 243, 255, var(--bs-link-underline-opacity, 1)) !important;
-            text-decoration-color: RGBA(221, 243, 255, var(--bs-link-underline-opacity, 1)) !important; }
+    color: RGBA(126, 225, 176, var(--bs-link-opacity, 1)) !important;
+    -webkit-text-decoration-color: RGBA(126, 225, 176, var(--bs-link-underline-opacity, 1)) !important;
+            text-decoration-color: RGBA(126, 225, 176, var(--bs-link-underline-opacity, 1)) !important; }
 
 .link-primary {
   color: RGBA(var(--bs-primary-rgb), var(--bs-link-opacity, 1)) !important;
@@ -15464,7 +15464,7 @@ textarea.form-control-lg {
   --bs-primary-xxxlight: #F8FAFF;
   --bs-primary-xxlight: #E3F3FF;
   --bs-primary-xlight: #F7FCFF;
-  --bs-primary-light: #D5F0FF;
+  --bs-primary-light: #5ED99C;
   --bs-primary: #30A46A;
   --bs-primary-dark: #1074B5;
   --bs-secondary-xlight: #FFFCF6;
@@ -15495,7 +15495,7 @@ textarea.form-control-lg {
   --bs-primary-xxxlight-rgb: 248, 250, 255;
   --bs-primary-xxlight-rgb: 227, 243, 255;
   --bs-primary-xlight-rgb: 247, 252, 255;
-  --bs-primary-light-rgb: 213, 240, 255;
+  --bs-primary-light-rgb: 94, 217, 156;
   --bs-primary-rgb: 48, 164, 106;
   --bs-primary-dark-rgb: 16, 116, 181;
   --bs-secondary-xlight-rgb: 255, 252, 246;
@@ -16251,6 +16251,11 @@ select[disabled] {
   @media (max-width: 1200px) {
     .login {
       min-height: 500px; } }
+  @media (max-width: 576px) {
+    .login {
+      border-radius: 24px;
+      -webkit-box-shadow: 3px 3px 6px #6c757d;
+              box-shadow: 3px 3px 6px #6c757d; } }
   .login-brand {
     width: 114px; }
     @media (max-width: 991px) {
@@ -16342,11 +16347,15 @@ select[disabled] {
     @media (max-width: 768px) {
       .login-btn {
         font-size: 1.25rem; } }
+    @media (max-width: 576px) {
+      .login-btn {
+        border-radius: 8px !important;
+        font-size: 1rem; } }
   @media (max-width: 768px) {
     .login-form-title {
       font-size: 1.25rem; } }
   .login input:not([type="checkbox"]) {
-    border-radius: 15px;
+    border-radius: 15px !important;
     background: #fff;
     padding-left: 20px;
     height: 55px;
@@ -16354,6 +16363,10 @@ select[disabled] {
     @media (max-width: 768px) {
       .login input:not([type="checkbox"]) {
         height: 48px; } }
+    @media (max-width: 576px) {
+      .login input:not([type="checkbox"]) {
+        height: 42px;
+        border-radius: 8px !important; } }
     .login input:not([type="checkbox"])::-webkit-input-placeholder {
       font-size: 1.25rem !important; }
     .login input:not([type="checkbox"])::-moz-placeholder {
@@ -16451,6 +16464,9 @@ select[disabled] {
 
 /*--------------------選單開始------------------*/
 .navbar {
+  width: calc(100% - 320px);
+  left: auto;
+  right: 0;
   -webkit-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
@@ -16599,7 +16615,7 @@ select[disabled] {
                 flex-direction: row;
         min-width: 56px; }
         .navbar .nav-link:hover {
-          background: #dff4ff !important;
+          background: #66dba1 !important;
           opacity: 1;
           color: #fff; }
         .navbar .nav-link img {
@@ -16609,7 +16625,7 @@ select[disabled] {
         min-width: 100%; } }
     .navbar .nav-link[data-style="dark"] {
       color: #fff;
-      background: #D5F0FF; }
+      background: #5ED99C; }
     .navbar .nav-link[data-bs-toggle="collapse"]:not(.collapsed) {
       background: #30A46A; }
       .navbar .nav-link[data-bs-toggle="collapse"]:not(.collapsed):hover {
@@ -16620,7 +16636,7 @@ select[disabled] {
       .navbar .nav-link[data-bs-toggle="collapse"]:not(.collapsed) p {
         color: #fff; }
     .navbar .nav-link.collapsed {
-      background: #D5F0FF; }
+      background: #5ED99C; }
       .navbar .nav-link.collapsed img {
         -webkit-filter: none;
                 filter: none; }
@@ -16628,7 +16644,7 @@ select[disabled] {
         color: #343a40; }
     .navbar .nav-link:hover {
       opacity: 0.8;
-      background: #D5F0FF; }
+      background: #5ED99C; }
     .navbar .nav-link img {
       width: 30px; }
       @media (max-width: 991px) {
@@ -16983,18 +16999,18 @@ footer {
 
 /*------------------------測邊選單開始----------------------------*/
 .side-menu {
-  margin-top: 62px;
-  width: 350px;
-  height: calc(100vh - 62px);
+  width: 320px;
+  height: 100vh;
   position: fixed;
   left: 0;
   -webkit-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
   z-index: 250;
-  background: #D5F0FF;
-  -webkit-box-shadow: 0 10px 10px #6c757d;
-          box-shadow: 0 10px 10px #6c757d; }
+  background: -webkit-gradient(linear, left top, left bottom, from(#30A46A), to(#5ED99C));
+  background: -o-linear-gradient(top, #30A46A 0%, #5ED99C 100%);
+  background: linear-gradient(to bottom, #30A46A 0%, #5ED99C 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ }
   @media (max-width: 991px) {
     .side-menu {
       width: 280px;
@@ -17055,7 +17071,7 @@ footer {
     .side-menu .accordion-item .accordion-item:last-child {
       border-bottom: none; }
   .side-menu .accordion-button {
-    background: #D5F0FF;
+    background: #5ED99C;
     font-size: 1.25rem;
     font-weight: 600;
     padding: 16px 16px 16px 40px;
@@ -17217,7 +17233,7 @@ footer {
       display: block;
       height: 100%;
       width: 1px;
-      background: #D5F0FF;
+      background: #5ED99C;
       position: absolute;
       left: 23px;
       top: 0; }
@@ -17316,9 +17332,9 @@ footer {
 
 /*------------------------內容區塊開始----------------------------*/
 .side-content {
-  width: calc(100% - 350px);
+  width: calc(100% - 320px);
   height: calc(100vh - 62px);
-  margin-left: 350px;
+  margin-left: 320px;
   margin-top: 62px;
   -webkit-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
@@ -17795,7 +17811,7 @@ footer {
       -webkit-filter: brightness(500);
               filter: brightness(500); }
     .side-info-header[data-style="light"] {
-      background: #D5F0FF;
+      background: #5ED99C;
       color: #1074B5; }
       .side-info-header[data-style="light"] img {
         -webkit-filter: none;
@@ -18007,7 +18023,7 @@ hr {
   .footable .footable-details tbody tr {
     border-bottom: 1px solid #dee2e6; }
   .footable .footable-details tbody th {
-    background: #D5F0FF;
+    background: #5ED99C;
     color: #1074B5;
     text-align: right;
     vertical-align: middle; }
@@ -18036,7 +18052,7 @@ hr {
           border-radius: 0 50rem 50rem 0;
           background: #fff;
           border-left: 0;
-          border: 1px solid #D5F0FF;
+          border: 1px solid #5ED99C;
           border-left: none;
           background: url("../images/ic-search-blue.svg") no-repeat center #fff;
           background-size: 20px;
@@ -18374,8 +18390,8 @@ hr {
 .img-list-link {
   display: block;
   border-radius: 10px;
-  border: 4px solid #D5F0FF;
-  background: #D5F0FF;
+  border: 4px solid #5ED99C;
+  background: #5ED99C;
   overflow: hidden;
   height: 110px;
   position: relative;
@@ -18439,7 +18455,7 @@ hr {
       -ms-flex-align: center;
           align-items: center;
   border-radius: 10px;
-  border: 2px dashed #D5F0FF;
+  border: 2px dashed #5ED99C;
   color: #30A46A;
   font-size: 0.9rem;
   height: 110px; }
@@ -18640,7 +18656,7 @@ hr {
   line-height: 40px;
   width: 40px;
   color: #1074B5;
-  border-bottom: 1px solid #D5F0FF;
+  border-bottom: 1px solid #5ED99C;
   background: none; }
 
 .bootstrap-datetimepicker-widget table th.picker-switch {
@@ -18970,9 +18986,9 @@ hr {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 1px solid #D5F0FF;
+  border: 1px solid #5ED99C;
   border-radius: 5px;
-  color: #D5F0FF;
+  color: #5ED99C;
   font-size: 0.9rem;
   padding: 0; }
   @media (max-width: 768px) {
@@ -19471,7 +19487,7 @@ hr {
 
 /*-----------------列表樣式---------------------*/
 .tag-list-go {
-  background: #D5F0FF;
+  background: #5ED99C;
   width: 24px;
   height: 24px;
   border-radius: 50%;

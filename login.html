@@ -2,110 +2,31 @@
 <html lang="zh-Hant-TW">
 
 <head>
-	<title>凱馨實業股份有限公司 - 供應鏈產銷管理平台</title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="keywords" content="供應鏈產銷管理平台,供應鏈,產銷,應鏈產銷管理,凱馨實業,凱馨">
-	<meta name="description" content="供應鏈產銷管理平台" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta property="og:site_name" content="供應鏈產銷管理平台" />
-	<meta property="og:image" content="assets/images/fb-img.png" />
-	<!--FB分享設定-->
+    <title>凱馨實業股份有限公司 - 供應鏈產銷管理平台</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="供應鏈產銷管理平台,供應鏈,產銷,應鏈產銷管理,凱馨實業,凱馨">
+    <meta name="description" content="供應鏈產銷管理平台" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:site_name" content="供應鏈產銷管理平台" />
+    <meta property="og:image" content="assets/images/fb-img.png" />
+    <!--FB分享設定-->
 
-	<link rel="icon" href="assets/images/favicon.svg" type="image/ico" />
-	<!--iconfont設定-->
-	<link rel="stylesheet" href="assets/style/all.css">
-	<link rel="stylesheet"
-		href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-	<!--css設定-->
+    <link rel="icon" href="assets/images/favicon.svg" type="image/ico" />
+    <!--iconfont設定-->
+    <link rel="stylesheet" href="assets/style/all.css">
+    <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!--css設定-->
 </head>
-
 <body class="scrollbar">
 	<!-- SCRIPTS -->
 	<script src="assets/js/jquery-3.7.1.min.js"></script>
 	<script src="assets/js/bootstrap.bundle.js"></script>
 	<script src="assets/js/script.js"></script>
-	<script src="assets/js/footable.js"></script>
-	<script src="assets/js/moment-with-locales.min.js"></script>
-	<script src="assets/js/tempusdominus-bootstrap-4.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
-	<script type="text/javascript">
-		$(function () {
-			function RESIZE() {
-				var WINDOW = $(window).width();
-				if (WINDOW < 768) {
-					$(".js-side-menu").addClass("close");
-					$(".js-side-content").addClass("close");
-				}else{
-					$(".js-side-menu").removeClass("close");
-					$(".js-side-content").removeClass("close");
-				}
-			}
-
-			// Initial call
-			RESIZE();
-
-			$(window).resize(function () {
-				RESIZE();
-			});
-			//拖曳功能
-			$(".js-draggable").draggable();
-			//日期功能
-			var options = {
-				locale: 'zh-tw',
-				defaultDate: new Date(),
-				format: 'L',
-				icons: {
-					time: "bi bi-clock",
-					date: "bi bi-calendar",
-					up: "bi bi-arrow-up",
-					down: "bi bi-arrow-down",
-					previous: "bi bi-chevron-left",
-					next: "bi bi-chevron-right",
-					today: "bi bi-clock",
-					clear: "bi bi-trash3"
-				},
-				widgetPositioning: {
-					vertical: 'bottom',
-				}
-			};
-			$('#exportFrom, #exportTo').datetimepicker(options);
-			//拉霸控制項
-			updateProgress();
-			function updateProgress() {
-				var rangeContainers = document.querySelectorAll('.range-group');
-				rangeContainers.forEach(function (container) {
-					var range = container.querySelector('.form-range');
-					var progress = container.querySelector('.progress-bar');
-					range.addEventListener('input', function () {
-						var value = this.value;
-						progress.style.width = value + '%';
-						progress.setAttribute('aria-valuenow', value);
-						progress.setAttribute('style', 'width: ' + value + '%;');
-					});
-				});
-			}
-		});
-		//iframe高度控制
-		function reinitIframe(item) {
-			var iframe = document.getElementById(item);
-			try {
-				var bHeight = iframe.contentWindow.document.body.scrollHeight;
-				var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
-				var height = Math.max(bHeight, dHeight);
-				iframe.height = height;
-				console.log(height);
-			} catch (ex) { }
-		}
-	</script>
-	<script type="text/javascript">
-		$(".js-side-info-body").find('button').click(function () {
-			let linkTarget = $(this).attr("data-bs-target");
-			window.parent.$(linkTarget).modal("show");
-		});
-	</script>
 	<div class="wrapper" data-bg="login">
 	<div class="container">
 		<h1 class="login-title text-primary mb-2">
@@ -153,7 +74,7 @@
 
 						</div>
 						<div class="d-grid">
-							<button class="login-btn btn btn-primary text-white py-2 mb-3 mb-xl-5" type="button"
+							<button class="login-btn btn btn-primary text-white py-2 mb-xl-5" type="button"
 								onclick="location.href='index.html';">登入</button>
 						</div>
 					</form>
@@ -163,27 +84,30 @@
 	</div>
 </div>
 	<footer>
-		<div class="container footer">
-			<div class="w-100 me-4">
-				<div class="d-flex flex-column flex-md-row mb-2">
-					<p class="fs-6">凱馨實業股份有限公司 供貨商銷售管理平台</p>
-					<span class="text-gray-600 ms-md-auto">建議瀏覽器: Google Chrome 、Edge以上</span>
-				</div>
-				<ul class="footer-list mb-3 mb-md-0">
-					<li class="li footer-list-item"><span>維修廠商｜</span>巨鷗科技股份有限公司</li>
-					<li class="li footer-list-item"><span>系統操作問題｜</span>大鷗科技股份有限公司</li>
-					<li class="li footer-list-item"><span>聯絡窗口｜</span>江哲瑋 (04)22985258 #509</li>
-					<li class="li footer-list-item"><span>信箱｜</span><a href="mailto:mark@geo.com.tw" target="_blank"
-							class="link-gray-800">mark@geo.com.tw</a></li>
-				</ul>
-			</div>
-			<ul class="footer-link flex-shrink-0 ms-md-auto me-auto me-md-0">
-				<li class="me-2"><a href="#" target="_blank" class="footer-link-item"><img src="./assets/images/ic-fb.svg" alt="facebook"></a></li>
-				<li class="me-2"><a href="#" target="_blank" class="footer-link-item"><img src="./assets/images/ic-flickr.svg" alt="flickr"></a></li>
-				<li><a href="#" target="_blank" class="footer-link-item"><img src="./assets/images/ic-youtube.svg" alt="youtube"></a></li>
-			</ul>
-		</div>
-	</footer>
+    <div class="container footer">
+        <div class="w-100 me-4">
+            <div class="d-flex flex-column flex-md-row mb-2">
+                <p class="fs-6">凱馨實業股份有限公司 供貨商銷售管理平台</p>
+                <span class="text-gray-600 ms-md-auto">建議瀏覽器: Google Chrome 、Edge以上</span>
+            </div>
+            <ul class="footer-list mb-3 mb-md-0">
+                <li class="li footer-list-item"><span>維修廠商｜</span>巨鷗科技股份有限公司</li>
+                <li class="li footer-list-item"><span>系統操作問題｜</span>大鷗科技股份有限公司</li>
+                <li class="li footer-list-item"><span>聯絡窗口｜</span>江哲瑋 (04)22985258 #509</li>
+                <li class="li footer-list-item"><span>信箱｜</span><a href="mailto:mark@geo.com.tw" target="_blank"
+                        class="link-gray-800">mark@geo.com.tw</a></li>
+            </ul>
+        </div>
+        <ul class="footer-link flex-shrink-0 ms-md-auto me-auto me-md-0">
+            <li class="me-2"><a href="#" target="_blank" class="footer-link-item"><img src="./assets/images/ic-fb.svg"
+                        alt="facebook"></a></li>
+            <li class="me-2"><a href="#" target="_blank" class="footer-link-item"><img
+                        src="./assets/images/ic-flickr.svg" alt="flickr"></a></li>
+            <li><a href="#" target="_blank" class="footer-link-item"><img src="./assets/images/ic-youtube.svg"
+                        alt="youtube"></a></li>
+        </ul>
+    </div>
+</footer>
 </body>
 
 </html>

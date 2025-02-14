@@ -18,95 +18,18 @@ $(function () {//JS開頭
 	$('#top-menu').on('click', function () {//手機版主下拉選單收闔設定
 	if(WINDOW < 992){
 			$(this).collapse('toggle');
+
 		}
         
     });
 
-	$(".js-side-info-full").click(function () {//開啟底部滿版視窗
-		window.parent.$(".js-side-info").addClass("open");
-		window.parent.$(".js-side-info").addClass("full");
-		window.parent.$(".js-map-content-wrapper").addClass("hide");
-	})
-	$(".js-side-info-full-close").click(function () {//關閉底部滿版視窗
-		window.parent.$(".js-side-info").removeClass("open");
-		window.parent.$(".js-side-info").removeClass("full");
-		window.parent.$(".js-map-content-wrapper").removeClass("hide");
-		window.parent.$(".js-map-content-wrapper").css('height', '');
-	})
-	$(".js-btn-all-info").click(function () {//開啟底部視窗
-		window.parent.$(".js-side-info").addClass("open");
-		window.parent.$(".js-map-content-wrapper").css('height', ' calc(100% - 360px)');
-		window.parent.$(".js-map-content-wrapper").removeClass("hide");
-	})
-	$(".js-side-info-close").click(function () {//關閉底部視窗
-		window.parent.$(".js-side-info").removeClass("open");
-		window.parent.$(".js-map-content-wrapper").css('height', '');
-		window.parent.$(".js-map-content-wrapper").removeClass("hide");
-	})
-	$(".js-side-info-mode-toggler").click(function () {//底部視窗滿版切換模式
-		$(this).toggleClass("active");
-		window.parent.$(".js-side-info").toggleClass("full");
-		window.parent.$(".js-map-content-wrapper").toggleClass("hide");
-		var $span = $(this).find("span");
-            if ($span.text() === "資料列表模式") {
-                $span.text("地圖輔助模式");
-            } else {
-                $span.text("資料列表模式");
-            }
-	})
-	$(".js-btn-parent-modal-open").click(function () {//底部視窗開啟父層視窗
-		let content = $(this).attr("data-bs-target");
-		window.parent.$(content).modal("show");
-	})
-
-	$(".js-map-comparison").click(function () {//地圖比對
-		$(".js-map-content").toggleClass("compare");
-		$(".js-map-content-compare").toggleClass("compare");
-		if ($(".js-map-content-compare").hasClass("compare")) {
-			return false;
-		}else{
-			$(".js-map-content-compare").css("width", "");
-		}
-	})
-
-
-	$(".js-info-closer").click(function () {
-		$(".js-map-content-wrapper").removeClass('open');
-		$(".js-map-content-wrapper").css('height', ' calc(100vh - 54px)');
-		$(".js-side-info").removeClass('open');
-	})
 	$(".js-side-menu-toggler").click(function () {
 		$('.js-side-menu').toggleClass("close");
 		$(".js-side-content").toggleClass("close");
+		$(".js-navbar").toggleClass("w-100");
+		$(".js-footer").toggleClass("w-100");
 	})
 	
-	//---------------------視窗拖曳設定------------------------
-	$('.js-map-content-wrapper').resizable({
-		handles: 's'
-	});
-	const resizeObserver = new ResizeObserver(onResize);
-	resizeObserver.observe(document.querySelector('.js-map-content-wrapper'));
-
-	function onResize(e) {
-		$(".js-side-info").addClass("hide");
-		document.addEventListener('mouseup', function (e) {
-			$(".js-side-info").removeClass("hide");
-		});
-	}
-
-	$('.js-map-content-compare').resizable({//地圖比對
-		handles: 'w'
-	});
-	const resizeObserver1 = new ResizeObserver(onResizeMap);
-	resizeObserver1.observe(document.querySelector('.js-map-content-compare'));
-
-	//底部視窗伸縮設定
-	//---------------------頁籤設定------------------------
-	$('.js-toggle-menu').find(".js-toggle-button").click(function () {
-		$(this).toggleClass("active");
-		$(this).siblings('.js-toggle-button').removeClass('active');
-
-	});
 
 	//手風琴按鈕切換設定
 	$(".js-accordion-menu").find('button').click(function () {

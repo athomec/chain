@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17" height="34" viewBox="0 0 17 34">
+  <g id="ic-menu-arrow" transform="translate(-2452 202)">
+    <g id="Group_1168" data-name="Group 1168">
+      <path id="ic-menu-arrow-2" data-name="ic-menu-arrow" d="M6.976,1.793a2,2,0,0,1,3.048,0L14.2,6.7A2,2,0,0,1,12.675,10H4.325A2,2,0,0,1,2.8,6.7Z" transform="translate(2469 -188) rotate(180)" fill="#6bdfa5"/>
+      <rect id="Rectangle_1097" data-name="Rectangle 1097" width="17" height="17" transform="translate(2452 -202)" fill="none"/>
+    </g>
+    <g id="Group_1169" data-name="Group 1169" transform="translate(0 17)">
+      <path id="ic-menu-arrow-3" data-name="ic-menu-arrow" d="M6.976,1.793a2,2,0,0,1,3.048,0L14.2,6.7A2,2,0,0,1,12.675,10H4.325A2,2,0,0,1,2.8,6.7Z" transform="translate(2469 -188) rotate(180)" fill="#30a46a"/>
+      <rect id="Rectangle_1097-2" data-name="Rectangle 1097" width="17" height="17" transform="translate(2452 -202)" fill="none"/>
+    </g>
+  </g>
+</svg>

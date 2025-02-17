@@ -16549,7 +16549,7 @@ select[disabled] {
   @media (max-width: 991px) {
     .container {
       max-width: 100%; } }
-  @media (max-width: 420px) {
+  @media (max-width: 576px) {
     .container {
       width: 100%; } }
 

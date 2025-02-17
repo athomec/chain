@@ -808,7 +808,6 @@
                          xAxis: {
                             type: 'category',
                             fontSize: 10, // 調小字體
-                             margin: 8,     // 與座標軸的距離
                             data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
                         },
                         yAxis: {
@@ -863,6 +862,11 @@
                             legend: {
                                 data: ['A項目', 'B項目']
                             },
+                            grid: {
+                            left: '2%',   // 增加左側間距
+                            right: '2%',  // 增加右側間距
+                            containLabel: true // 讓標籤不會超出邊界
+                        },
                             xAxis: [
                                 {
                                     type: 'category',
@@ -881,8 +885,6 @@
                                     interval: 50,
                                     axisLabel: {
                                         formatter: '{value} ml',
-                                        fontSize: 10, // 調小字體
-                                        margin: 8     // 與座標軸的距離
                                     }
                                 },
                                 {
@@ -955,7 +957,12 @@
                                 type: 'line',
                                 smooth: true
                             }
-                        ]
+                        ],
+                        grid: {
+                            left: '2%',   // 增加左側間距
+                            right: '2%',  // 增加右側間距
+                            containLabel: true // 讓標籤不會超出邊界
+                        },
                         };
                     // 使用刚指定的配置项和数据显示图表。
                     myChart.setOption(option);

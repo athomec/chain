@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <title>凱馨實業股份有限公司 - 供應鏈產銷管理平台</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="供應鏈產銷管理平台,供應鏈,產銷,應鏈產銷管理,凱馨實業,凱馨">
+    <meta name="description" content="供應鏈產銷管理平台" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:site_name" content="供應鏈產銷管理平台" />
+    <meta property="og:image" content="assets/images/fb-img.png" />
+    <!--FB分享設定-->
+
+    <link rel="icon" href="assets/images/favicon.svg" type="image/ico" />
+    <!--iconfont設定-->
+    <link rel="stylesheet" href="assets/style/all.css">
+    <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!--css設定-->
+</head>
+
+	<body class="scrollbar">
+		<!-- SCRIPTS -->
+		<script src="assets/js/jquery-3.7.1.min.js"></script>
+		<script src="assets/js/bootstrap.bundle.js"></script>
+		<script src="assets/js/script.js"></script>
+		<script src="assets/js/footable.js"></script>
+		<script src="assets/js/moment-with-locales.min.js"></script>
+		<script src="assets/js/tempusdominus-bootstrap-4.min.js"></script>
+		<script src="assets/js/echarts.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				window.addEventListener('resize', function () {
+					myChart.resize(); // 重新調整圖表大小
+				});
+
+				function RESIZE() {
+					var WINDOW = $(window).width();
+					if (WINDOW < 992) {
+						$(".js-side-menu").addClass("close");
+						$(".js-side-content").addClass("close");
+						$(".js-navbar").addClass("w-100");
+						$(".js-footer").addClass("w-100");
+					} else {
+						$(".js-side-menu").removeClass("close");
+						$(".js-side-content").removeClass("close");
+						$(".js-navbar").removeClass("w-100");
+						$(".js-footer").removeClass("w-100");
+					}
+				}
+
+				// Initial call
+				RESIZE();
+
+				$(window).resize(function () {
+					RESIZE();
+				});
+				//表格功能
+				 $('.table-footable').footable({
+					"paging": {
+						"enabled": true,
+						"size": 3,
+					},
+					"sorting": {
+						"enabled": true
+					}
+				});
+
+				//拖曳功能
+				$(".js-draggable").draggable();
+				//日期功能
+				var options = {
+					locale: 'zh-tw',
+					defaultDate: new Date(),
+					format: 'L',
+					icons: {
+						time: "bi bi-clock",
+						date: "bi bi-calendar",
+						up: "bi bi-arrow-up",
+						down: "bi bi-arrow-down",
+						previous: "bi bi-chevron-left",
+						next: "bi bi-chevron-right",
+						today: "bi bi-clock",
+						clear: "bi bi-trash3"
+					},
+					widgetPositioning: {
+						vertical: 'bottom',
+					}
+				};
+				$('#chicken_date_from1, #chicken_date_to1, #chicken_date_from2, #chicken_date_to2').datetimepicker(options);
+			});
+		</script>
+		<!-----內頁框架開始----->
+		<div class="d-flex">
+			<!-----側邊選單開始----->
+			<div class="side-menu js-side-menu" id="side-menu">
+				<button class="btn side-menu-toggler js-side-menu-toggler js-map-inside-toggler d-none d-lg-flex"
+					type="button">
+					<img src="./assets/images/ic-chevron-left.svg" alt="導引列表icon">
+				</button>
+				<div class="side-menu-body scroll">
+					<div class="accordion" id="accordionGroup">
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse1">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 系統管理
+								</button>
+							</h2>
+							<div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link active"><img
+											src="./assets/images/ic-duck.svg" alt="icon">1-1 系統公告</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-2 角色及功能維護</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-3 帳號管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-4 系統 log 紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-5 廠商資料查詢</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-6 客戶資料查詢</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-7 商品資料查詢</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-8 設備儀器監控管理</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse2">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 契養戶專區
+								</button>
+							</h2>
+							<div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-1 入雛資料管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-2 種雞場飼養紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-3 商用雞場飼養紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-4 商用雞場秤重紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-5 飼養環境紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-6 飼料管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-7 商品訂單管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-8 農場飼養分析</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse3">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 電宰管理
+								</button>
+							</h2>
+							<div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-1 契養戶收雞排程設定</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-2 毛雞車作業管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-3 每日生產資訊</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-4 各品級數量紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-5 全雞分級分析</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-6 能源管理看板統計</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-7 契養戶收雞排程設定</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-8 毛雞車作業管理</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse4">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 銷售數據報表
+								</button>
+							</h2>
+							<div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">4-1 銷售數據報表</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse5">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 視覺觀察板
+								</button>
+							</h2>
+							<div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">5-1 視覺觀察板</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-----側邊選單結束----->
+			<!-----主要內容開始----->
+			<div class="side-content js-side-content">
+				<header>
+					<nav class="navbar navbar-expand-lg fixed-top bg-white js-navbar">
+						<div class="container-fluid px-0 justify-content-start">
+							<a class="navbar-brand d-flex" href="index.html">
+								<img src="./assets/images/logo.svg" alt="logo" class="navbar-brand-logo">
+								<p class="navbar-brand-title">供應鏈產銷管理平台</p>
+							</a>
+							<button class="navbar-toggler border-0 px-1 js-side-menu-toggler" type="button" data-target="#side-menu">
+								<img src="./assets/images/ic-bar.svg" alt="選單">
+							</button>
+							<ul class="navbar-nav flex-row ms-auto">
+								<li class="nav-item fw-medium">
+									<a href="#" class="nav-link border-1 border-end border-gray-400 pe-3 me-3"><img
+											src="./assets/images/ic-service.svg" alt="icon" class="me-1">客服填報</a>
+								</li>
+								<li class="nav-item me-2 me-lg-3 fw-medium">
+									Aske123456，您好
+								</li>
+								<li class="nav-item">
+									<a class="btn btn-outline-primary btn-sm rounded-3 fw-bold flex-shrink-0 px-3 px-xl-4 py-0"
+										href="login.html" title="登出">登出</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</header>
+				<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+        <li class="breadcrumb-item"><a href="#">系統管理</a></li>
+        <li class="breadcrumb-item active">系統公告</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <h3 class="main-title">系統公告</h3>
+    <div class="row gx-xxl-5 gy-3 mb-5">
+        <div class="col-md-4">
+            <div class="number-box">
+                <div class="number-box-text">入雛資料<br class="d-none d-md-inline">尚未匯入ERP</div>
+                <div class="number-box-num bg-highlight">13</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="number-box">
+                <div class="number-box-text">待審核單數</div>
+                <div class="number-box-num bg-tertiary-light">13</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="number-box">
+                <div class="number-box-text">本週待出雛筆數</div>
+                <div class="number-box-num bg-danger-light">13</div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="table-header">種雞育成率、產蛋率</h4>
+    <table class="table table-footable table-bordered border-gray-500" data-paging="true" data-sorting="true"
+        data-toggle-column="last">
+        <thead>
+            <tr>
+                <th scope="col" data-sorting="none" width="50">序</th>
+                <th scope="col">專案號碼</th>
+                <th scope="col" data-breakpoints="xs sm md">入雛單號</th>
+                <th scope="col" data-breakpoints="xs">雞場名稱</th>
+                <th scope="col" data-breakpoints="xs" width="110">雞種</th>
+                <th scope="col" data-breakpoints="xs sm" width="110">成率</th>
+                <th scope="col" data-breakpoints="xs sm" width="110">產蛋率</th>
+                <th scope="col" data-breakpoints="xs sm md" width="110">功能</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">
+                    1
+                </td>
+                <td data-th="專案號碼">
+                    20241017001
+                </td>
+                <td data-th="入雛單號">
+                    20240526002
+                </td>
+                <td data-th="雞場名稱">
+                    歐X帆-褒忠
+                </td>
+                <td data-th="雞種">
+                    桂丁
+                </td>
+                <td data-th="成率">
+                    80%
+                </td>
+                <td data-th="產蛋率">
+                    90%
+                </td>
+                <td data-th="功能">
+                    <div class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1"><img
+                            src="./assets/images/ic-search.svg" alt="icon" class="me-1">檢視</div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    2
+                </td>
+                <td data-th="專案號碼">
+                    20241017001
+                </td>
+                <td data-th="入雛單號">
+                    20240526002
+                </td>
+                <td data-th="雞場名稱">
+                    歐X帆-褒忠
+                </td>
+                <td data-th="雞種">
+                    桂丁
+                </td>
+                <td data-th="成率">
+                    80%
+                </td>
+                <td data-th="產蛋率">
+                    90%
+                </td>
+                <td data-th="功能">
+                    <div class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1"><img
+                            src="./assets/images/ic-search.svg" alt="icon" class="me-1">檢視</div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    3
+                </td>
+                <td data-th="專案號碼">
+                    20241017001
+                </td>
+                <td data-th="入雛單號">
+                    20240526002
+                </td>
+                <td data-th="雞場名稱">
+                    歐X帆-褒忠
+                </td>
+                <td data-th="雞種">
+                    桂丁
+                </td>
+                <td data-th="成率">
+                    80%
+                </td>
+                <td data-th="產蛋率">
+                    90%
+                </td>
+                <td data-th="功能">
+                    <div class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1"><img
+                            src="./assets/images/ic-search.svg" alt="icon" class="me-1">檢視</div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    4
+                </td>
+                <td data-th="專案號碼">
+                    20241017001
+                </td>
+                <td data-th="入雛單號">
+                    20240526002
+                </td>
+                <td data-th="雞場名稱">
+                    歐X帆-褒忠
+                </td>
+                <td data-th="雞種">
+                    桂丁
+                </td>
+                <td data-th="成率">
+                    80%
+                </td>
+                <td data-th="產蛋率">
+                    90%
+                </td>
+                <td data-th="功能">
+                    <div class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1"><img
+                            src="./assets/images/ic-search.svg" alt="icon" class="me-1">檢視</div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    5
+                </td>
+                <td data-th="專案號碼">
+                    20241017001
+                </td>
+                <td data-th="入雛單號">
+                    20240526002
+                </td>
+                <td data-th="雞場名稱">
+                    歐X帆-褒忠
+                </td>
+                <td data-th="雞種">
+                    桂丁
+                </td>
+                <td data-th="成率">
+                    80%
+                </td>
+                <td data-th="產蛋率">
+                    90%
+                </td>
+                <td data-th="功能">
+                    <div class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1"><img
+                            src="./assets/images/ic-search.svg" alt="icon" class="me-1">檢視</div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    6
+                </td>
+                <td data-th="專案號碼">
+                    20241017001
+                </td>
+                <td data-th="入雛單號">
+                    20240526002
+                </td>
+                <td data-th="雞場名稱">
+                    歐X帆-褒忠
+                </td>
+                <td data-th="雞種">
+                    桂丁
+                </td>
+                <td data-th="成率">
+                    80%
+                </td>
+                <td data-th="產蛋率">
+                    90%
+                </td>
+                <td data-th="功能">
+                    <div class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1"><img
+                            src="./assets/images/ic-search.svg" alt="icon" class="me-1">檢視</div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    7
+                </td>
+                <td data-th="專案號碼">
+                    20241017001
+                </td>
+                <td data-th="入雛單號">
+                    20240526002
+                </td>
+                <td data-th="雞場名稱">
+                    歐X帆-褒忠
+                </td>
+                <td data-th="雞種">
+                    桂丁
+                </td>
+                <td data-th="成率">
+                    80%
+                </td>
+                <td data-th="產蛋率">
+                    90%
+                </td>
+                <td data-th="功能">
+                    <div class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1"><img
+                            src="./assets/images/ic-search.svg" alt="icon" class="me-1">檢視</div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    8
+                </td>
+                <td data-th="專案號碼">
+                    20241017001
+                </td>
+                <td data-th="入雛單號">
+                    20240526002
+                </td>
+                <td data-th="雞場名稱">
+                    歐X帆-褒忠
+                </td>
+                <td data-th="雞種">
+                    桂丁
+                </td>
+                <td data-th="成率">
+                    80%
+                </td>
+                <td data-th="產蛋率">
+                    90%
+                </td>
+                <td data-th="功能">
+                    <div class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1"><img
+                            src="./assets/images/ic-search.svg" alt="icon" class="me-1">檢視</div>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    9
+                </td>
+                <td data-th="專案號碼">
+                    20241017001
+                </td>
+                <td data-th="入雛單號">
+                    20240526002
+                </td>
+                <td data-th="雞場名稱">
+                    歐X帆-褒忠
+                </td>
+                <td data-th="雞種">
+                    桂丁
+                </td>
+                <td data-th="成率">
+                    80%
+                </td>
+                <td data-th="產蛋率">
+                    90%
+                </td>
+                <td data-th="功能">
+                    <div class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1"><img
+                            src="./assets/images/ic-search.svg" alt="icon" class="me-1">檢視</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="table-page-info fs-7 mb-5">
+        共 120筆，每頁顯示<input type="text" class="form-control form-control-sm mx-2 py-0 text-center" value="10"
+            style="width:58px;min-height: 20px;">筆
+    </div>
+<div class="mb-5">
+    <h4 class="table-header">本週雛雞出雛紀錄 <span class="text-quaternary">日期：2025/01/19 - 2025/01/25</span></h4>
+    <div class="bg-white border border-gray-500 p-4 mb-4">
+        <div class="row gx-4 gy-3">
+            <div class="col-xxl-8">
+                <div class="d-flex align-items-sm-center flex-column flex-sm-row mb-3">
+                    <label class="form-label mb-2 mb-sm-0">出四日：</label>
+                    <div class="input-group date" id="chicken_date_from1" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input border-end-0 pe-0"
+                            data-target="#chicken_date_from1">
+                        <div class="input-group-append" data-target="#chicken_date_from1" data-toggle="datetimepicker">
+                            <button class="btn input-group-text" title="日期" value="日期">
+                                <img src="./assets/images/ic-calendar.svg" alt="icon">
+                            </button>
+                        </div>
+                    </div>
+                    <span class="px-2 px-md-3">~</span>
+                    <div class="input-group date" id="chicken_date_to1" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input border-end-0 pe-0"
+                            data-target="#chicken_date_to1">
+                        <div class="input-group-append" data-target="#chicken_date_to1" data-toggle="datetimepicker">
+                            <button class="btn input-group-text" title="日期" value="日期">
+                                <img src="./assets/images/ic-calendar.svg" alt="icon">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-sm-center flex-column flex-sm-row">
+                    <label class="form-label mb-2 mb-sm-0">出四日：</label>
+                    <div class="input-group date" id="chicken_date_from2" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input border-end-0 pe-0"
+                            data-target="#chicken_date_from2">
+                        <div class="input-group-append" data-target="#chicken_date_from1" data-toggle="datetimepicker">
+                            <button class="btn input-group-text" title="日期" value="日期">
+                                <img src="./assets/images/ic-calendar.svg" alt="icon">
+                            </button>
+                        </div>
+                    </div>
+                    <span class="px-2 px-md-3">~</span>
+                    <div class="input-group date" id="chicken_date_to2" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input border-end-0 pe-0" data-target="#chicken_date_to2">
+                        <div class="input-group-append" data-target="#chicken_date_to1" data-toggle="datetimepicker">
+                            <button class="btn input-group-text" title="日期" value="日期">
+                                <img src="./assets/images/ic-calendar.svg" alt="icon">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xxl-4">
+                <div class="d-flex align-items-center">
+                    <label for="num" class="form-label flex-shrink-0 mb-0"><span class="text-danger">*</span>每手過磅數量：</label>
+                    <input id="num" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center gx-3">
+        <div class="col-6 d-flex">
+            <div class="btn btn-primary-dark d-flex justify-content-center align-items-center rounded-3 ms-auto"
+                style="width: 92px;">
+                <img src="./assets/images/ic-search.svg" alt="icon">查詢
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="btn btn-quaternary-xdark text-white d-flex justify-content-center rounded-3"
+                style="width: 92px;">
+                新增
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-footable table-bordered border-gray-500 mt-4" data-paging="true" data-sorting="true"
+        data-toggle-column="last">
+        <thead>
+            <tr>
+                <th scope="col" data-sorting="none" width="50">序</th>
+                <th scope="col">專案號碼</th>
+                <th scope="col" data-breakpoints="xs sm md">入雛單號</th>
+                <th scope="col" data-breakpoints="xs sm md">入單號</th>
+                <th scope="col" data-breakpoints="xs">雞場名稱</th>
+                <th scope="col" data-breakpoints="xs sm" width="110">雞種</th>
+                <th scope="col" data-breakpoints="xs sm md lg" width="170">預計出雛隻數</th>
+                <th scope="col" data-breakpoints="xs sm md" width="110">出雛日</th>
+                <th scope="col" data-breakpoints="xs sm md" width="170">分配的商用雞場</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">
+                    1
+                </td>
+                <td data-th="專案號碼">
+                    20241017001
+                </td>
+                <td data-th="入雛單號">
+                    20240526002
+                </td>
+                <td data-th="入單號">
+                    2025/01/01
+                </td>
+                <td data-th="雞場名稱">
+                    歐X帆-褒忠
+                </td>
+                <td data-th="雞種">
+                    桂丁
+                </td>
+                <td data-th="預計出雛隻數">
+                    500
+                </td>
+                <td data-th="出雛日">
+                    2025/01/01
+                </td>
+                <td data-th="分配的商用雞場">
+                    某某某商用雞場
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    2
+                </td>
+                <td data-th="專案號碼">
+                    20241017001
+                </td>
+                <td data-th="入雛單號">
+                    20240526002
+                </td>
+                <td data-th="入單號">
+                    2025/01/01
+                </td>
+                <td data-th="雞場名稱">
+                    歐X帆-褒忠
+                </td>
+                <td data-th="雞種">
+                    桂丁
+                </td>
+                <td data-th="預計出雛隻數">
+                    500
+                </td>
+                <td data-th="出雛日">
+                    2025/01/01
+                </td>
+                <td data-th="分配的商用雞場">
+                    某某某商用雞場
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    3
+                </td>
+                <td data-th="專案號碼">
+                    20241017001
+                </td>
+                <td data-th="入雛單號">
+                    20240526002
+                </td>
+                <td data-th="入單號">
+                    2025/01/01
+                </td>
+                <td data-th="雞場名稱">
+                    歐X帆-褒忠
+                </td>
+                <td data-th="雞種">
+                    桂丁
+                </td>
+                <td data-th="預計出雛隻數">
+                    500
+                </td>
+                <td data-th="出雛日">
+                    2025/01/01
+                </td>
+                <td data-th="分配的商用雞場">
+                    某某某商用雞場
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="row gy-4 mb-5">
+        <div class="col-xl-6">
+            <div class="chart-box">
+                <h5 class="chart-box-header">
+                    品質量價值圖
+                </h5>
+                <div id="pie" class="chart-box-body" style="width: 100%; height: 380px;"></div>
+                <script type="text/javascript">
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('pie'));
+
+                    // 指定图表的配置项和数据
+                    option = {
+                        color: [
+                            '#30A46A',
+                            '#AA9263',
+                            '#FFBC2E',
+                            '#62D1DE',
+                            '#FFBAAC'
+                        ],
+                            title: {
+                                text: '',
+                                subtext: '',
+                                left: ''
+                            },
+                            tooltip: {
+                                trigger: 'item'
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                left: 'left'
+                            },
+                            series: [
+                                {
+                                    name: 'Access From',
+                                    type: 'pie',
+                                    radius: '50%',
+                                    data: [
+                                        { value: 72, name: 'A項目' },
+                                        { value: 72, name: 'B項目' },
+                                        { value: 72, name: 'C項目' },
+                                        { value: 72, name: 'D項目' },
+                                        { value: 72, name: 'E項目' }
+                                    ],
+                                    emphasis: {
+                                        itemStyle: {
+                                            shadowBlur: 10,
+                                            shadowOffsetX: 0,
+                                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                        }
+                                    }
+                                }
+                            ]
+                        };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                </script>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="chart-box">
+                <h5 class="chart-box-header">
+                    品級數量統計
+                </h5>
+                <div id="category" class="chart-box-body" style="width: 100%; height: 380px;"></div>
+                <script type="text/javascript">
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('category'));
+
+                    // 指定图表的配置项和数据
+                    option = {
+                        color: [
+                            '#FFBC2E',
+                            '#AA9263',
+                            '#FFBC2E',
+                            '#62D1DE',
+                            '#FFBAAC'
+                        ],
+                         xAxis: {
+                            type: 'category',
+                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [
+                            {
+                                data: [120, 200, 150, 80, 70, 110, 130],
+                                type: 'bar'
+                            }
+                        ]
+                    };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                </script>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="chart-box">
+                <h5 class="chart-box-header">
+                    孵化率
+                </h5>
+                <div id="linebar" class="chart-box-body" style="width: 100%; height: 380px;"></div>
+                <script type="text/javascript">
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('linebar'));
+
+                    // 指定图表的配置项和数据
+                    option = {
+                        color: [
+                            '#A0B2F9',
+                            '#EE6805'
+                        ],
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross',
+                                    crossStyle: {
+                                        color: '#999'
+                                    }
+                                }
+                            },
+                            toolbox: {
+                                feature: {
+                                    dataView: { show: false, readOnly: false },
+                                    magicType: { show: false, type: ['line', 'bar'] },
+                                    restore: { show: false },
+                                    saveAsImage: { show: false }
+                                }
+                            },
+                            legend: {
+                                data: ['A項目', 'B項目']
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                                    axisPointer: {
+                                        type: 'shadow'
+                                    }
+                                }
+                            ],
+                            yAxis: [
+                                {
+                                    type: 'value',
+                                    name: 'A項目',
+                                    min: 0,
+                                    max: 250,
+                                    interval: 50,
+                                    axisLabel: {
+                                        formatter: '{value} ml'
+                                    }
+                                },
+                                {
+                                    type: 'value',
+                                    name: 'B項目',
+                                    min: 0,
+                                    max: 25,
+                                    interval: 5,
+                                    axisLabel: {
+                                        formatter: '{value} °C'
+                                    }
+                                }
+                            ],
+                            series: [
+                                {
+                                    name: 'A項目',
+                                    type: 'bar',
+                                    tooltip: {
+                                        valueFormatter: function (value) {
+                                            return value + ' ml';
+                                        }
+                                    },
+                                    data: [
+                                        2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3
+                                    ]
+                                },
+                                {
+                                    name: 'B項目',
+                                    type: 'line',
+                                    yAxisIndex: 1,
+                                    tooltip: {
+                                        valueFormatter: function (value) {
+                                            return value + ' °C';
+                                        }
+                                    },
+                                    data: [2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
+                                }
+                            ]
+                        };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                </script>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="chart-box">
+                <h5 class="chart-box-header">
+                    產蛋率
+                </h5>
+                <div id="line" class="chart-box-body" style="width: 100%; height: 380px;"></div>
+                <script type="text/javascript">
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('line'));
+
+                    // 指定图表的配置项和数据
+                    option = {
+                        color: [
+                            '#9C7B41'
+                        ],
+                            xAxis: {
+                            type: 'category',
+                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [
+                            {
+                                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                                type: 'line',
+                                smooth: true
+                            }
+                        ]
+                        };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                </script>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="chart-box">
+                <h5 class="chart-box-header">
+                    生育率和死亡率
+                </h5>
+                <div id="lines" class="chart-box-body" style="width: 100%; height: 380px;"></div>
+                <script type="text/javascript">
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('lines'));
+
+                    // 指定图表的配置项和数据
+                    option = {
+                        color: [
+                            '#30A46A',
+                            '#EE6805'
+                        ],
+                       title: {
+                            text: ''
+                        },
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {},
+                        toolbox: {
+                            show: false,
+                            feature: {
+                                dataZoom: {
+                                    yAxisIndex: 'none'
+                                },
+                                dataView: { readOnly: false },
+                                magicType: { type: ['line', 'bar'] },
+                                restore: {},
+                                saveAsImage: {}
+                            }
+                        },
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                        },
+                        yAxis: {
+                            type: 'value',
+                            axisLabel: {
+                                formatter: '{value} °C'
+                            }
+                        },
+                        series: [
+                            {
+                                name: 'A項目',
+                                type: 'line',
+                                data: [10, 11, 13, 11, 12, 12, 9],
+                                markPoint: {
+                                    data: [
+                                        { type: 'max', name: 'Max' },
+                                        { type: 'min', name: 'Min' }
+                                    ]
+                                },
+                                markLine: {
+                                    data: [{ type: 'average', name: 'Avg' }]
+                                }
+                            },
+                            {
+                                name: 'B項目',
+                                type: 'line',
+                                data: [1, -2, 2, 5, 3, 2, 0],
+                                markPoint: {
+                                    data: [{ name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }]
+                                },
+                                markLine: {
+                                    data: [
+                                        { type: 'average', name: 'Avg' },
+                                        [
+                                            {
+                                                symbol: 'none',
+                                                x: '90%',
+                                                yAxis: 'max'
+                                            },
+                                            {
+                                                symbol: 'circle',
+                                                label: {
+                                                    position: 'start',
+                                                    formatter: 'Max'
+                                                },
+                                                type: 'max',
+                                                name: '最高点'
+                                            }
+                                        ]
+                                    ]
+                                }
+                            }
+                        ]
+                    };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+					<footer class="js-footer page">
+    <div class="container footer">
+        <div class="gotop">
+            TOP
+        </div>
+        <div class="w-100 me-4">
+            <div class="d-flex flex-column flex-md-row mb-2">
+                <p class="fs-6">凱馨實業股份有限公司 供貨商銷售管理平台</p>
+                <span class="text-gray-600 ms-md-auto">建議瀏覽器: Google Chrome 、Edge以上</span>
+            </div>
+            <ul class="footer-list mb-3 mb-sm-0">
+                <li class="li footer-list-item"><span>維修廠商｜</span>巨鷗科技股份有限公司</li>
+                <li class="li footer-list-item"><span>系統操作問題｜</span>大鷗科技股份有限公司</li>
+                <li class="li footer-list-item"><span>聯絡窗口｜</span>江哲瑋 (04)22985258 #509</li>
+                <li class="li footer-list-item"><span>信箱｜</span><a href="mailto:mark@geo.com.tw" target="_blank"
+                        class="link-gray-800">mark@geo.com.tw</a></li>
+            </ul>
+        </div>
+        <ul class="footer-link flex-shrink-0 ms-sm-auto me-auto me-sm-0">
+            <li class="me-2"><a href="#" target="_blank" class="footer-link-item"><img src="./assets/images/ic-fb.svg"
+                        alt="facebook"></a></li>
+            <li class="me-2"><a href="#" target="_blank" class="footer-link-item"><img
+                        src="./assets/images/ic-flickr.svg" alt="flickr"></a></li>
+            <li><a href="#" target="_blank" class="footer-link-item"><img src="./assets/images/ic-youtube.svg"
+                        alt="youtube"></a></li>
+        </ul>
+    </div>
+</footer>
+			</div>
+			<!-----主要內容結束----->
+		</div>
+
+	</body>
+
+</html>

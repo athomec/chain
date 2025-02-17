@@ -16320,7 +16320,8 @@ progress {
 html,
 body {
   width: 100%;
-  -webkit-text-size-adjust: none; }
+  -webkit-text-size-adjust: none;
+  overflow-x: hidden; }
 
 body {
   -webkit-font-smoothing: antialiased;
@@ -16548,6 +16549,9 @@ select[disabled] {
   @media (max-width: 991px) {
     .container {
       max-width: 100%; } }
+  @media (max-width: 420px) {
+    .container {
+      width: 100%; } }
 
 /*--------------------選單開始------------------*/
 .navbar {
@@ -18021,7 +18025,8 @@ hr {
   border-radius: 10px;
   border: 1px solid #30A46A;
   overflow: hidden;
-  background: #fff; }
+  background: #fff;
+  height: 424px; }
   .chart-box-header {
     background: #30A46A;
     color: #fff;
@@ -18031,6 +18036,7 @@ hr {
     font-weight: 500; }
   .chart-box-body {
     padding: 24px;
+    height: 380px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -18040,6 +18046,9 @@ hr {
     @media (max-width: 1200px) {
       .chart-box-body {
         padding: 16px; } }
+    @media (max-width: 768px) {
+      .chart-box-body {
+        padding: 12px; } }
 
 /*
 * FooTable v3 - FooTable is a jQuery plugin that aims to make HTML tables on smaller devices look awesome.
@@ -18539,10 +18548,10 @@ table.footable-editing.footable-editing-always-show button.footable-add {
       content: " ";
       display: block;
       position: absolute;
-      width: 1px;
+      width: 3px;
       height: 100%;
       top: 0;
-      left: -1px;
+      left: -2px;
       background: #FBFBEF; }
     .footable-paging .pagination:after {
       left: auto;

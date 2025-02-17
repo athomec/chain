@@ -759,6 +759,9 @@
                                 {
                                     name: 'Access From',
                                     type: 'pie',
+                                    label: {
+                                        show: window.innerWidth > 768  // 只在桌機版顯示標籤
+                                    },
                                     radius: '50%',
                                     data: [
                                         { value: 72, name: 'A項目' },
@@ -804,6 +807,8 @@
                         ],
                          xAxis: {
                             type: 'category',
+                            fontSize: 10, // 調小字體
+                             margin: 8,     // 與座標軸的距離
                             data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
                         },
                         yAxis: {
@@ -875,7 +880,9 @@
                                     max: 250,
                                     interval: 50,
                                     axisLabel: {
-                                        formatter: '{value} ml'
+                                        formatter: '{value} ml',
+                                        fontSize: 10, // 調小字體
+                                        margin: 8     // 與座標軸的距離
                                     }
                                 },
                                 {
@@ -971,6 +978,11 @@
                             '#30A46A',
                             '#EE6805'
                         ],
+                        grid: {
+                            left: '2%',   // 增加左側間距
+                            right: '15%',  // 增加右側間距
+                            containLabel: true // 讓標籤不會超出邊界
+                        },
                        title: {
                             text: ''
                         },
@@ -993,7 +1005,9 @@
                         xAxis: {
                             type: 'category',
                             boundaryGap: false,
-                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                            fontSize: 8, // 調小字體
+                            margin: 15     // 與座標軸的距離
                         },
                         yAxis: {
                             type: 'value',

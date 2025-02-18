@@ -18327,7 +18327,7 @@ hr {
     @media (max-width: 576px) {
       .fc-more-link {
         white-space: initial !important;
-        font-size: 0.8rem; } }
+        font-size: 0.7rem; } }
     .fc-more-link:hover {
       color: #dc3545;
       background: none !important; }

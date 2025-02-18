@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <title>凱馨實業股份有限公司 - 供應鏈產銷管理平台</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="供應鏈產銷管理平台,供應鏈,產銷,應鏈產銷管理,凱馨實業,凱馨">
+    <meta name="description" content="供應鏈產銷管理平台" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:site_name" content="供應鏈產銷管理平台" />
+    <meta property="og:image" content="assets/images/fb-img.png" />
+    <!--FB分享設定-->
+
+    <link rel="icon" href="assets/images/favicon.svg" type="image/ico" />
+    <!--iconfont設定-->
+    <link rel="stylesheet" href="assets/style/all.css">
+    <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!--css設定-->
+</head>
+
+	<body class="scrollbar">
+		<!-- SCRIPTS -->
+		<script src="assets/js/jquery-3.7.1.min.js"></script>
+		<script src="assets/js/bootstrap.bundle.js"></script>
+		<script src="assets/js/script.js"></script>
+		<script src="assets/js/footable.js"></script>
+		<script src="assets/js/moment-with-locales.min.js"></script>
+		<script src="assets/js/tempusdominus-bootstrap-4.min.js"></script>
+		<script src="assets/js/echarts.js"></script><!--圖表-->
+		<script src="assets/js/index.global.js"></script><!--行事曆-->
+		<script src="assets/js//lunar.js"></script><!--行事曆農曆-->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				window.addEventListener('resize', function () {
+					myChart.resize(); // 重新調整圖表大小
+				});
+
+				function RESIZE() {
+					var WINDOW = $(window).width();
+					if (WINDOW < 992) {
+						$(".js-side-menu").addClass("close");
+						$(".js-side-content").addClass("close");
+						$(".js-navbar").addClass("w-100");
+						$(".js-footer").addClass("w-100");
+					} else {
+						$(".js-side-menu").removeClass("close");
+						$(".js-side-content").removeClass("close");
+						$(".js-navbar").removeClass("w-100");
+						$(".js-footer").removeClass("w-100");
+					}
+				}
+
+				// Initial call
+				RESIZE();
+
+				$(window).resize(function () {
+					RESIZE();
+				});
+				//表格功能
+				 $('.table-footable').footable({
+					"paging": {
+						"enabled": true,
+						"size": 3,
+					},
+					"sorting": {
+						"enabled": true
+					}
+				});
+
+				//拖曳功能
+				$(".js-draggable").draggable();
+				//日期功能
+				var options = {
+					locale: 'zh-tw',
+					defaultDate: new Date(),
+					format: 'L',
+					icons: {
+						time: "bi bi-clock",
+						date: "bi bi-calendar",
+						up: "bi bi-arrow-up",
+						down: "bi bi-arrow-down",
+						previous: "bi bi-chevron-left",
+						next: "bi bi-chevron-right",
+						today: "bi bi-clock",
+						clear: "bi bi-trash3"
+					},
+					widgetPositioning: {
+						vertical: 'bottom',
+					}
+				};
+				$('#chicken_date_from1, #chicken_date_to1, #chicken_date_from2, #chicken_date_to2').datetimepicker(options);
+			});
+		</script>
+		<!-----內頁框架開始----->
+		<div class="d-flex">
+			<!-----側邊選單開始----->
+			<div class="side-menu js-side-menu" id="side-menu">
+				<button class="btn side-menu-toggler js-side-menu-toggler js-map-inside-toggler d-none d-lg-flex"
+					type="button">
+					<img src="./assets/images/ic-chevron-left.svg" alt="導引列表icon">
+				</button>
+				<div class="side-menu-body scroll">
+					<div class="accordion" id="accordionGroup">
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse1">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 系統管理
+								</button>
+							</h2>
+							<div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link "><img
+											src="./assets/images/ic-duck.svg" alt="icon">1-1 系統公告</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-2 角色及功能維護</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-3 帳號管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-4 系統 log 紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-5 廠商資料查詢</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-6 客戶資料查詢</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-7 商品資料查詢</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-8 設備儀器監控管理</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse2">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 契養戶專區
+								</button>
+							</h2>
+							<div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-1 入雛資料管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-2 種雞場飼養紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-3 商用雞場飼養紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-4 商用雞場秤重紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-5 飼養環境紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-6 飼料管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-7 商品訂單管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-8 農場飼養分析</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse3">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 電宰管理
+								</button>
+							</h2>
+							<div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="calendar.html" class="accordion-link active"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-1 契養戶收雞排程設定</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-2 毛雞車作業管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-3 每日生產資訊</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-4 各品級數量紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-5 全雞分級分析</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-6 能源管理看板統計</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-7 契養戶收雞排程設定</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-8 毛雞車作業管理</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse4">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 銷售數據報表
+								</button>
+							</h2>
+							<div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">4-1 銷售數據報表</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse5">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 視覺觀察板
+								</button>
+							</h2>
+							<div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">5-1 視覺觀察板</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-----側邊選單結束----->
+			<!-----主要內容開始----->
+			<div class="side-content js-side-content">
+				<header>
+					<nav class="navbar navbar-expand-lg fixed-top bg-white js-navbar">
+						<div class="container-fluid px-0 justify-content-start">
+							<a class="navbar-brand d-flex" href="index.html">
+								<img src="./assets/images/logo.svg" alt="logo" class="navbar-brand-logo">
+								<p class="navbar-brand-title">供應鏈產銷管理平台</p>
+							</a>
+							<button class="navbar-toggler border-0 px-1 js-side-menu-toggler" type="button" data-target="#side-menu">
+								<img src="./assets/images/ic-bar.svg" alt="選單">
+							</button>
+							<ul class="navbar-nav flex-row ms-auto">
+								<li class="nav-item fw-medium">
+									<a href="#" class="nav-link border-1 border-end border-gray-400 pe-3 me-3"><img
+											src="./assets/images/ic-service.svg" alt="icon" class="me-1">客服填報</a>
+								</li>
+								<li class="nav-item me-2 me-lg-3 fw-medium">
+									Aske123456，您好
+								</li>
+								<li class="nav-item">
+									<a class="btn btn-outline-primary btn-sm rounded-3 fw-bold flex-shrink-0 px-3 px-xl-4 py-0"
+										href="login.html" title="登出">登出</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</header>
+				<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+        <li class="breadcrumb-item"><a href="#">電宰管理</a></li>
+        <li class="breadcrumb-item active">契養戶收雞排程設定</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <div class="main-title">
+        <h3 class="main-title-txt">契養戶收雞排程設定</h3>
+        <button class="btn btn-highlight-dark d-flex align-items-center main-title-btn py-1">
+            <img src="./assets/images/ic-add.svg" alt="icon" class="me-2">新增收雞排程
+        </button>
+    </div>
+
+    <div id="calendar" class="js-calendar mb-5"></div>
+</div>
+
+<script>
+    //行事曆設定
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: 'zh-tw',//中文設定
+            buttonText: {
+                today: '今天',
+                month: '月',
+                week: '周',
+                day: '日',
+            },
+            initialView: 'dayGridMonth',
+            dayCellContent: (arg) => {
+                let solarDate = arg.date;
+                let lunarDate = Solar.fromYmd(solarDate.getFullYear(), solarDate.getMonth() + 1, solarDate.getDate()).getLunar();
+                let lunarDay = lunarDate.getDayInChinese(); // 取得農曆日
+                return `${solarDate.getMonth() + 1}/${solarDate.getDate()} (${lunarDay})`; // MM/DD (農曆日)
+
+            },
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,dayGridWeek,dayGridDay'
+            },
+            dayHeaderFormat: function (date) {
+                return date.date.marker.toLocaleDateString('zh-TW', { weekday: 'short' }).replace("週", "");
+            },
+
+            moreLinkText: "更多",
+            initialDate: '2025-02-18',
+            navLinks: true, // can click day/week names to navigate views
+            editable: true,
+            dayMaxEvents: true, // allow "more" link when too many events
+            events: [
+                {
+                    title: "屠宰車：1\n禽場名稱：歐X帆",
+                    start: '2025-02-13T09:30:00',
+                    display: 'block',
+                    borderColor: '#FFDDB7',
+                    backgroundColor: '#FFDDB7'
+                },
+                {
+                    title: "屠宰車：1-1\n禽場名稱：歐X帆",
+                    start: '2025-02-13T10:30:00',
+                    display: 'block',
+                    borderColor: '#FFDDB7',
+                    backgroundColor: '#FFDDB7'
+                },
+                {
+                    title: "屠宰車：1-1\n禽場名稱：歐X帆",
+                    start: '2025-02-13T10:50:00',
+                    display: 'block',
+                    borderColor: '#FFDDB7',
+                    backgroundColor: '#FFDDB7'
+                },
+                {
+                    title: '屠宰車：2\n禽場名稱：歐X帆',
+                    start: '2025-02-17T08:30:00',
+                    display: 'block',
+                    borderColor: '#FFDDB7',
+                    backgroundColor: '#FFDDB7'
+                },
+                {
+                    title: '屠宰車：2\n禽場名稱：歐X帆',
+                    start: '2025-02-17T20:30:00',
+                    display: 'block',
+                    borderColor: '#FFDDB7',
+                    backgroundColor: '#FFDDB7'
+                },
+                {
+                    title: '屠宰車：2\n禽場名稱：歐X帆',
+                    start: '2025-02-17T21:30:00',
+                    display: 'block',
+                    borderColor: '#FFDDB7',
+                    backgroundColor: '#FFDDB7'
+                },
+                {
+                    title: '屠宰車：3\n禽場名稱：歐X帆',
+                    start: '2025-02-28T20:30:00',
+                    display: 'block',
+                    borderColor: '#FFDDB7',
+                    backgroundColor: '#FFDDB7'
+                },
+                {
+                    title: '可預約',
+                    start: '2023-10-12T17:30:00',
+                    display: 'block',
+                    borderColor: 'green',
+                    backgroundColor: 'green',
+                    url: 'reservation-detail.html'
+                },
+                {
+                    title: '未開放預約',
+                    start: '2023-10-20T20:30:00',
+                    display: 'block',
+                    borderColor: '#746D6D',
+                    backgroundColor: '#746D6D'
+                },
+                {
+                    title: '可預約',
+                    start: '2023-10-12T19:20:00',
+                    display: 'block',
+                    borderColor: '#057E01',
+                    backgroundColor: '#057E01',
+                    url: 'reservation-detail.html'
+                },
+                {
+                    title: '已額滿',
+                    start: '2023-10-12T18:00:00',
+                    display: 'block',
+                    borderColor: '#DB0909',
+                    backgroundColor: '#DB0909'
+                },
+                {
+                    title: '可預約',
+                    start: '2023-10-12T21:20:00',
+                    display: 'block',
+                    borderColor: '#057E01',
+                    backgroundColor: '#057E01',
+                    url: 'reservation-detail.html'
+                },
+                {
+                    title: '已額滿',
+                    start: '2023-10-13T09:00:00',
+                    display: 'block',
+                    borderColor: '#DB0909',
+                    backgroundColor: '#DB0909'
+                },
+                {
+                    title: '可預約',
+                    start: '2023-10-15T17:30:00',
+                    display: 'block',
+                    borderColor: 'green',
+                    backgroundColor: 'green',
+                    url: 'reservation-detail.html'
+                }
+            ],
+            eventColor: '#378006',
+            eventContent: function (arg) {
+                return {
+                    html: arg.event.title.replace(/\n/g, "<br>")
+                };
+            }
+        });
+
+        calendar.render();
+        $(".js-calendar").find("a").attr("title", "看更多");
+    });
+
+</script>
+					<footer class="js-footer page">
+    <div class="container footer">
+        <div class="gotop">
+            TOP
+        </div>
+        <div class="w-100 me-4">
+            <div class="d-flex flex-column flex-md-row mb-2">
+                <p class="fs-6">凱馨實業股份有限公司 供貨商銷售管理平台</p>
+                <span class="text-gray-600 ms-md-auto">建議瀏覽器: Google Chrome 、Edge以上</span>
+            </div>
+            <ul class="footer-list mb-3 mb-sm-0">
+                <li class="li footer-list-item"><span>維修廠商｜</span>巨鷗科技股份有限公司</li>
+                <li class="li footer-list-item"><span>系統操作問題｜</span>大鷗科技股份有限公司</li>
+                <li class="li footer-list-item"><span>聯絡窗口｜</span>江哲瑋 (04)22985258 #509</li>
+                <li class="li footer-list-item"><span>信箱｜</span><a href="mailto:mark@geo.com.tw" target="_blank"
+                        class="link-gray-800">mark@geo.com.tw</a></li>
+            </ul>
+        </div>
+        <ul class="footer-link flex-shrink-0 ms-sm-auto me-auto me-sm-0">
+            <li class="me-2"><a href="#" target="_blank" class="footer-link-item"><img src="./assets/images/ic-fb.svg"
+                        alt="facebook"></a></li>
+            <li class="me-2"><a href="#" target="_blank" class="footer-link-item"><img
+                        src="./assets/images/ic-flickr.svg" alt="flickr"></a></li>
+            <li><a href="#" target="_blank" class="footer-link-item"><img src="./assets/images/ic-youtube.svg"
+                        alt="youtube"></a></li>
+        </ul>
+    </div>
+</footer>
+			</div>
+			<!-----主要內容結束----->
+		</div>
+
+	</body>
+
+</html>

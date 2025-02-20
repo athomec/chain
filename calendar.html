@@ -108,12 +108,12 @@
 					<div class="accordion" id="accordionGroup">
 						<div class="accordion-item">
 							<h2 class="accordion-header">
-								<button class="accordion-button" type="button" data-bs-toggle="collapse"
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
 									data-bs-target="#collapse1">
 									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 系統管理
 								</button>
 							</h2>
-							<div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionGroup">
+							<div id="collapse1" class="accordion-collapse collapse " data-bs-parent="#accordionGroup">
 								<div class="accordion-body">
 									<a href="#" class="accordion-link "><img
 											src="./assets/images/ic-duck.svg" alt="icon">1-1 系統公告</a>
@@ -141,7 +141,7 @@
 									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 契養戶專區
 								</button>
 							</h2>
-							<div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+							<div id="collapse2" class="accordion-collapse collapse " data-bs-parent="#accordionGroup">
 								<div class="accordion-body">
 									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
 											alt="icon">2-1 入雛資料管理</a>
@@ -149,7 +149,7 @@
 											alt="icon">2-2 種雞場飼養紀錄</a>
 									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
 											alt="icon">2-3 商用雞場飼養紀錄</a>
-									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+									<a href="weighing.html" class="accordion-link "><img src="./assets/images/ic-duck.svg"
 											alt="icon">2-4 商用雞場秤重紀錄</a>
 									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
 											alt="icon">2-5 飼養環境紀錄</a>
@@ -164,12 +164,12 @@
 						</div>
 						<div class="accordion-item">
 							<h2 class="accordion-header">
-								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+								<button class="accordion-button " type="button" data-bs-toggle="collapse"
 									data-bs-target="#collapse3">
 									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 電宰管理
 								</button>
 							</h2>
-							<div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+							<div id="collapse3" class="accordion-collapse collapse collapsed show" data-bs-parent="#accordionGroup">
 								<div class="accordion-body">
 									<a href="calendar.html" class="accordion-link active"><img src="./assets/images/ic-duck.svg"
 											alt="icon">3-1 契養戶收雞排程設定</a>
@@ -337,7 +337,8 @@
                     start: '2025-02-17T20:30:00',
                     display: 'block',
                     borderColor: '#FFDDB7',
-                    backgroundColor: '#FFDDB7'
+                    backgroundColor: '#FFDDB7',
+                    url: 'index.html'
                 },
                 {
                     title: '屠宰車：2\n禽場名稱：歐X帆',
@@ -352,59 +353,6 @@
                     display: 'block',
                     borderColor: '#FFDDB7',
                     backgroundColor: '#FFDDB7'
-                },
-                {
-                    title: '可預約',
-                    start: '2023-10-12T17:30:00',
-                    display: 'block',
-                    borderColor: 'green',
-                    backgroundColor: 'green',
-                    url: 'reservation-detail.html'
-                },
-                {
-                    title: '未開放預約',
-                    start: '2023-10-20T20:30:00',
-                    display: 'block',
-                    borderColor: '#746D6D',
-                    backgroundColor: '#746D6D'
-                },
-                {
-                    title: '可預約',
-                    start: '2023-10-12T19:20:00',
-                    display: 'block',
-                    borderColor: '#057E01',
-                    backgroundColor: '#057E01',
-                    url: 'reservation-detail.html'
-                },
-                {
-                    title: '已額滿',
-                    start: '2023-10-12T18:00:00',
-                    display: 'block',
-                    borderColor: '#DB0909',
-                    backgroundColor: '#DB0909'
-                },
-                {
-                    title: '可預約',
-                    start: '2023-10-12T21:20:00',
-                    display: 'block',
-                    borderColor: '#057E01',
-                    backgroundColor: '#057E01',
-                    url: 'reservation-detail.html'
-                },
-                {
-                    title: '已額滿',
-                    start: '2023-10-13T09:00:00',
-                    display: 'block',
-                    borderColor: '#DB0909',
-                    backgroundColor: '#DB0909'
-                },
-                {
-                    title: '可預約',
-                    start: '2023-10-15T17:30:00',
-                    display: 'block',
-                    borderColor: 'green',
-                    backgroundColor: 'green',
-                    url: 'reservation-detail.html'
                 }
             ],
             eventColor: '#378006',
@@ -422,9 +370,9 @@
 </script>
 					<footer class="js-footer page">
     <div class="container footer">
-        <div class="gotop">
+        <a href="#" class="gotop">
             TOP
-        </div>
+        </a>
         <div class="w-100 me-4">
             <div class="d-flex flex-column flex-md-row mb-2">
                 <p class="fs-6">凱馨實業股份有限公司 供貨商銷售管理平台</p>
@@ -439,12 +387,19 @@
             </ul>
         </div>
         <ul class="footer-link flex-shrink-0 ms-sm-auto me-auto me-sm-0">
-            <li class="me-2"><a href="#" target="_blank" class="footer-link-item"><img src="./assets/images/ic-fb.svg"
-                        alt="facebook"></a></li>
-            <li class="me-2"><a href="#" target="_blank" class="footer-link-item"><img
-                        src="./assets/images/ic-flickr.svg" alt="flickr"></a></li>
-            <li><a href="#" target="_blank" class="footer-link-item"><img src="./assets/images/ic-youtube.svg"
-                        alt="youtube"></a></li>
+            <li class="me-2"><a href="#" target="_blank" class="footer-link-item">
+                <img src="./assets/images/ic-fb.svg" alt="facebook"></a>
+            </li>
+            <li class="me-2">
+                <a href="#" target="_blank" class="footer-link-item">
+                    <img src="./assets/images/ic-flickr.svg" alt="flickr">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank" class="footer-link-item">
+                    <img src="./assets/images/ic-youtube.svg" alt="youtube">
+                </a>
+            </li>
         </ul>
     </div>
 </footer>

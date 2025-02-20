@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <title>凱馨實業股份有限公司 - 供應鏈產銷管理平台</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="供應鏈產銷管理平台,供應鏈,產銷,應鏈產銷管理,凱馨實業,凱馨">
+    <meta name="description" content="供應鏈產銷管理平台" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:site_name" content="供應鏈產銷管理平台" />
+    <meta property="og:image" content="assets/images/fb-img.png" />
+    <!--FB分享設定-->
+
+    <link rel="icon" href="assets/images/favicon.svg" type="image/ico" />
+    <!--iconfont設定-->
+    <link rel="stylesheet" href="assets/style/all.css">
+    <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!--css設定-->
+</head>
+
+	<body class="scrollbar">
+		<!-- SCRIPTS -->
+		<script src="assets/js/jquery-3.7.1.min.js"></script>
+		<script src="assets/js/bootstrap.bundle.js"></script>
+		<script src="assets/js/script.js"></script>
+		<script src="assets/js/footable.js"></script>
+		<script src="assets/js/moment-with-locales.min.js"></script>
+		<script src="assets/js/tempusdominus-bootstrap-4.min.js"></script>
+		<script src="assets/js/echarts.js"></script><!--圖表-->
+		<script src="assets/js/index.global.js"></script><!--行事曆-->
+		<script src="assets/js//lunar.js"></script><!--行事曆農曆-->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				window.addEventListener('resize', function () {
+					myChart.resize(); // 重新調整圖表大小
+				});
+
+				function RESIZE() {
+					var WINDOW = $(window).width();
+					if (WINDOW < 992) {
+						$(".js-side-menu").addClass("close");
+						$(".js-side-content").addClass("close");
+						$(".js-navbar").addClass("w-100");
+						$(".js-footer").addClass("w-100");
+					} else {
+						$(".js-side-menu").removeClass("close");
+						$(".js-side-content").removeClass("close");
+						$(".js-navbar").removeClass("w-100");
+						$(".js-footer").removeClass("w-100");
+					}
+				}
+
+				// Initial call
+				RESIZE();
+
+				$(window).resize(function () {
+					RESIZE();
+				});
+				//表格功能
+				 $('.table-footable').footable({
+					"paging": {
+						"enabled": true,
+						"size": 3,
+					},
+					"sorting": {
+						"enabled": true
+					}
+				});
+
+				//拖曳功能
+				$(".js-draggable").draggable();
+				//日期功能
+				var options = {
+					locale: 'zh-tw',
+					defaultDate: new Date(),
+					format: 'L',
+					icons: {
+						time: "bi bi-clock",
+						date: "bi bi-calendar",
+						up: "bi bi-arrow-up",
+						down: "bi bi-arrow-down",
+						previous: "bi bi-chevron-left",
+						next: "bi bi-chevron-right",
+						today: "bi bi-clock",
+						clear: "bi bi-trash3"
+					},
+					widgetPositioning: {
+						vertical: 'bottom',
+					}
+				};
+				$('#chicken_date_from1, #chicken_date_to1, #chicken_date_from2, #chicken_date_to2').datetimepicker(options);
+			});
+		</script>
+		<!-----內頁框架開始----->
+		<div class="d-flex">
+			<!-----側邊選單開始----->
+			<div class="side-menu js-side-menu" id="side-menu">
+				<button class="btn side-menu-toggler js-side-menu-toggler js-map-inside-toggler d-none d-lg-flex"
+					type="button">
+					<img src="./assets/images/ic-chevron-left.svg" alt="導引列表icon">
+				</button>
+				<div class="side-menu-body scroll">
+					<div class="accordion" id="accordionGroup">
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse1">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 系統管理
+								</button>
+							</h2>
+							<div id="collapse1" class="accordion-collapse collapse " data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link "><img
+											src="./assets/images/ic-duck.svg" alt="icon">1-1 系統公告</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-2 角色及功能維護</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-3 帳號管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-4 系統 log 紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-5 廠商資料查詢</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-6 客戶資料查詢</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-7 商品資料查詢</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-8 設備儀器監控管理</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button " type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse2">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 契養戶專區
+								</button>
+							</h2>
+							<div id="collapse2" class="accordion-collapse collapse collapsed show" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-1 入雛資料管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-2 種雞場飼養紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-3 商用雞場飼養紀錄</a>
+									<a href="weighing.html" class="accordion-link active"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-4 商用雞場秤重紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-5 飼養環境紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-6 飼料管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-7 商品訂單管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-8 農場飼養分析</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse3">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 電宰管理
+								</button>
+							</h2>
+							<div id="collapse3" class="accordion-collapse collapse " data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="calendar.html" class="accordion-link "><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-1 契養戶收雞排程設定</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-2 毛雞車作業管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-3 每日生產資訊</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-4 各品級數量紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-5 全雞分級分析</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-6 能源管理看板統計</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-7 契養戶收雞排程設定</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-8 毛雞車作業管理</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse4">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 銷售數據報表
+								</button>
+							</h2>
+							<div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">4-1 銷售數據報表</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse5">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 視覺觀察板
+								</button>
+							</h2>
+							<div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">5-1 視覺觀察板</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-----側邊選單結束----->
+			<!-----主要內容開始----->
+			<div class="side-content js-side-content">
+				<header>
+					<nav class="navbar navbar-expand-lg fixed-top bg-white js-navbar">
+						<div class="container-fluid px-0 justify-content-start">
+							<a class="navbar-brand d-flex" href="index.html">
+								<img src="./assets/images/logo.svg" alt="logo" class="navbar-brand-logo">
+								<p class="navbar-brand-title">供應鏈產銷管理平台</p>
+							</a>
+							<button class="navbar-toggler border-0 px-1 js-side-menu-toggler" type="button" data-target="#side-menu">
+								<img src="./assets/images/ic-bar.svg" alt="選單">
+							</button>
+							<ul class="navbar-nav flex-row ms-auto">
+								<li class="nav-item fw-medium">
+									<a href="#" class="nav-link border-1 border-end border-gray-400 pe-3 me-3"><img
+											src="./assets/images/ic-service.svg" alt="icon" class="me-1">客服填報</a>
+								</li>
+								<li class="nav-item me-2 me-lg-3 fw-medium">
+									Aske123456，您好
+								</li>
+								<li class="nav-item">
+									<a class="btn btn-outline-primary btn-sm rounded-3 fw-bold flex-shrink-0 px-3 px-xl-4 py-0"
+										href="login.html" title="登出">登出</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</header>
+				<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+        <li class="breadcrumb-item"><a href="#">契養戶專區</a></li>
+        <li class="breadcrumb-item"><a href="#">商用雞場秤重紀錄</a></li>
+        <li class="breadcrumb-item active">編輯秤重紀錄</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <h3 class="main-title">編輯秤重紀錄</h3>
+
+    <h4 class="table-header">商用雞場基本資料</h4>
+    <table class="table table-rwd table-bordered border-gray-500 mb-0" data-style="twin">
+        <tbody>
+            <tr>
+                <th data-th="" width="16.6%">雞場名稱</th>
+                <td data-th="雞場名稱" width="33.3%">凱馨</td>
+                <th data-th="" width="16.6%">鳥類</th>
+                <td data-th="鳥類" width="33.3%">
+                    <div class="d-flex flex-wrap">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                value="option1" checked disabled>
+                            <label class="form-check-label" for="inlineRadio1">錦達</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                value="option2" disabled>
+                            <label class="form-check-label" for="inlineRadio2">桂丁</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th data-th="">雞場地址</th>
+                <td data-th="項次">雲林縣斗六市引善路196號</td>
+                <th data-th="">鳥類</th>
+                <td data-th="鳥類">中雞-60天</td>
+                </td>
+            </tr>
+            <tr>
+                <th data-th="">Email</th>
+                <td data-th="Email">
+                    <p class="over-text-2">20241017001</p>
+                </td>
+                <th data-th="">入雛數量</th>
+                <td data-th="入雛數量">入雛數量</td>
+            </tr>
+            <tr>
+                <th data-th="">電話</th>
+                <td data-th="電話">
+                    <p class="over-text-2">0912345678</p>
+                </td>
+                <th data-th="">入雛日</th>
+                <td data-th="入雛日">2024/10/17</td>
+            </tr>
+            <tr>
+                <th data-th="">抓雞日</th>
+                <td data-th="抓雞日" colspan="3">
+                    <p class="over-text-2">2024/12/10 ~ 2024/12/19</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="table-bottom bg-gray-200 border border-primary p-3 mb-5">
+        <ul>
+            <li>秤重天數：69 天 / 加總過磅數量：36 隻 / 加總過磅重量：85380 克 / 臭爪比例：10%</li>
+            <li>季平均重量：2.48公斤 / 平均毛重：2.37 公斤 / 扣除毛重的平均毛重：2.31 公斤 / 扣除毛重的平均毛重 - 季平均重量：0.01 公斤</li>
+        </ul>
+    </div>
+
+    <h4 class="table-header">入四資料</h4>
+    <table class="table table-rwd table-bordered border-gray-500 mb-5" data-style="twin" data-con="form">
+        <tbody>
+            <tr>
+                <th data-th="" width="16.6%"><label for="spot">雞場名稱</label></th>
+                <td data-th="雞場名稱" width="33.3%">
+                    <select class="form-select" id="spot">
+                        <option selected>請選擇</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </td>
+                <th data-th="" width="16.6%"><label for="number">專案號碼</label></th>
+                <td data-th="專案號碼" width="33.3%">
+                    <input type="text" class="form-control" id="number" placeholder="請輸入專案號碼">
+                </td>
+            </tr>
+            <tr>
+                <th data-th=""><label for="add">雞場地址</label></th>
+                <td data-th="雞場地址"><input type="text" class="form-control" id="add"></td>
+                <th data-th=""><label for="tel">電話</label></th>
+                <td data-th="電話"><input type="text" class="form-control" id="tel"></td>
+                </td>
+            </tr>
+            <tr>
+                <th data-th=""><label for="mail">Email</label></th>
+                <td data-th="Email"><input type="email" class="form-control" id="mail"></td>
+                <th data-th=""><label for="incharge">負擔人</label></th>
+                <td data-th="負擔人"><input type="text" class="form-control" id="incharge"></td>
+            </tr>
+            <tr>
+                <th data-th="">鳥類</th>
+                <td data-th="鳥類" colspan="3">
+                    <div class="d-flex flex-wrap align-items-center w-100">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="info" id="info1" value="option1" checked>
+                            <label class="form-check-label" for="info1">錦達</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="info" id="info2" value="option2">
+                            <label class="form-check-label" for="info2">桂丁</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="info" id="info3" value="option2">
+                            <label class="form-check-label" for="info3">其他</label>
+                        </div>
+                        <label for="info-others" class="visually-hidden">其他</label>
+                        <input type="text" class="form-control mt-2 mt-sm-0" id="info-others" style="max-width: 330px;">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th data-th="">飼養天數</th>
+                <td data-th="飼養天數" colspan="3">
+                    <div class="d-flex flex-wrap align-items-center w-100">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="keep" id="keep1" value="option2">
+                            <label class="form-check-label" for="keep1">燉雞</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="keep" id="keep2" value="option2">
+                            <label class="form-check-label" for="keep2">大雞</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="keep" id="keep3" value="option2">
+                            <label class="form-check-label" for="keep3">中雞</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="keep" id="keep4" value="option2">
+                            <label class="form-check-label" for="keep4">種雞</label>
+                        </div>
+                        <div class="d-flex align-items-center w-100" style="max-width: 400px;">
+                            <label for="keep-others" class="flex-shrink-0 me-2">天數</label>
+                            <input type="text" class="form-control mt-2 mt-sm-2" id="keep-others">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4 class="table-header">
+        入雛來源
+        <div class="table-header-btn">
+            <button class="btn btn-quaternary text-primary-dark py-1 fw-medium me-2">新增</button>
+            <button class="btn btn-quaternary text-primary-dark py-1 fw-medium">匯入雛通知單</button>
+        </div>
+    </h4>
+    <table class="table table-footable table-bordered border-gray-500" data-paging="true" data-sorting="true"
+        data-toggle-column="last">
+        <thead>
+            <tr>
+                <th scope="col" data-sorting="none" width="50">序</th>
+                <th scope="col">種雞場名稱</th>
+                <th scope="col" data-breakpoints="xs sm md">入孵日</th>
+                <th scope="col" data-breakpoints="xs">出雞日</th>
+                <th scope="col" data-breakpoints="xs sm md" width="110">預計數量</th>
+                <th scope="col" data-breakpoints="xs sm md" width="320">功能</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td scope="row">
+                    1
+                </td>
+                <td data-th="種雞場名稱">
+                    凱馨
+                </td>
+                <td data-th="入孵日">
+                    2025/01/01
+                </td>
+                <td data-th="出雞日">
+                    2025/01/01
+                </td>
+                <td data-th="預計數量">
+                    5,000
+                </td>
+                <td data-th="功能">
+                    <button
+                        class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-search.svg" alt="icon" class="me-1">入雛明細
+                    </button>
+                    <button class="btn btn-special d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                    </button>
+                    <button class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    2
+                </td>
+                <td data-th="種雞場名稱">
+                    凱馨
+                </td>
+                <td data-th="入孵日">
+                    2025/01/01
+                </td>
+                <td data-th="出雞日">
+                    2025/01/01
+                </td>
+                <td data-th="預計數量">
+                    25,000
+                </td>
+                <td data-th="功能">
+                    <button
+                        class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-search.svg" alt="icon" class="me-1">入雛明細
+                    </button>
+                    <button class="btn btn-special d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                    </button>
+                    <button class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    3
+                </td>
+                <td data-th="種雞場名稱">
+                    凱馨
+                </td>
+                <td data-th="入孵日">
+                    2025/01/01
+                </td>
+                <td data-th="出雞日">
+                    2025/01/01
+                </td>
+                <td data-th="預計數量">
+                    25,000
+                </td>
+                <td data-th="功能">
+                    <button class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center me-1">
+                        <img src="./assets/images/ic-search.svg" alt="icon" class="me-1">入雛明細
+                    </button>
+                    <button class="btn btn-special d-inline-flex rounded-3 align-items-center me-1">
+                        <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                    </button>
+                    <button class="btn btn-danger-light d-inline-flex rounded-3 align-items-center">
+                        <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    4
+                </td>
+                <td data-th="種雞場名稱">
+                    凱馨
+                </td>
+                <td data-th="入孵日">
+                    2025/01/01
+                </td>
+                <td data-th="出雞日">
+                    2025/01/01
+                </td>
+                <td data-th="預計數量">
+                    5,000
+                </td>
+                <td data-th="功能">
+                    <button
+                        class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-search.svg" alt="icon" class="me-1">入雛明細
+                    </button>
+                    <button class="btn btn-special d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                    </button>
+                    <button class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    5
+                </td>
+                <td data-th="種雞場名稱">
+                    凱馨
+                </td>
+                <td data-th="入孵日">
+                    2025/01/01
+                </td>
+                <td data-th="出雞日">
+                    2025/01/01
+                </td>
+                <td data-th="預計數量">
+                    5,000
+                </td>
+                <td data-th="功能">
+                    <button
+                        class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-search.svg" alt="icon" class="me-1">入雛明細
+                    </button>
+                    <button class="btn btn-special d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                    </button>
+                    <button class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    6
+                </td>
+                <td data-th="種雞場名稱">
+                    凱馨
+                </td>
+                <td data-th="入孵日">
+                    2025/01/01
+                </td>
+                <td data-th="出雞日">
+                    2025/01/01
+                </td>
+                <td data-th="預計數量">
+                    5,000
+                </td>
+                <td data-th="功能">
+                    <button
+                        class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-search.svg" alt="icon" class="me-1">入雛明細
+                    </button>
+                    <button class="btn btn-special d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                    </button>
+                    <button class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    7
+                </td>
+                <td data-th="種雞場名稱">
+                    凱馨
+                </td>
+                <td data-th="入孵日">
+                    2025/01/01
+                </td>
+                <td data-th="出雞日">
+                    2025/01/01
+                </td>
+                <td data-th="預計數量">
+                    5,000
+                </td>
+                <td data-th="功能">
+                    <button
+                        class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-search.svg" alt="icon" class="me-1">入雛明細
+                    </button>
+                    <button class="btn btn-special d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                    </button>
+                    <button class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td scope="row">
+                    8
+                </td>
+                <td data-th="種雞場名稱">
+                    凱馨
+                </td>
+                <td data-th="入孵日">
+                    2025/01/01
+                </td>
+                <td data-th="出雞日">
+                    2025/01/01
+                </td>
+                <td data-th="預計數量">
+                    5,000
+                </td>
+                <td data-th="功能">
+                    <button
+                        class="btn btn-highlight-dark d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-search.svg" alt="icon" class="me-1">入雛明細
+                    </button>
+                    <button class="btn btn-special d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                    </button>
+                    <button class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                        <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="table-page-info fs-7 mb-5">
+        共 120筆，每頁顯示<input type="text" class="form-control form-control-sm mx-2 py-0 text-center" value="10"
+            style="width:58px;min-height: 20px;">筆
+    </div>
+    <div class="mb-5">
+        <h4 class="table-header">過磅重量</h4>
+        <div class="bg-white border border-gray-500 p-4 mb-4">
+            <div class="row gx-4 gy-3">
+                <div class="col-xl-4">
+                    <div class="d-flex align-items-sm-center">
+                        <label class="form-label mb-2 mb-sm-0"><span class="text-danger">*</span>過磅日期：</label>
+                        <div class="input-group date" id="chicken_date_from1" data-target-input="nearest">
+                            <input type="text" class="form-control datetimepicker-input border-end-0 pe-0"
+                                data-target="#chicken_date_from1">
+                            <div class="input-group-append" data-target="#chicken_date_from1"
+                                data-toggle="datetimepicker">
+                                <button class="btn input-group-text" title="日期" value="日期">
+                                    <img src="./assets/images/ic-calendar.svg" alt="icon">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="d-flex align-items-center">
+                        <label for="num" class="form-label flex-shrink-0 mb-0"><span
+                                class="text-danger">*</span>每手過磅數量：</label>
+                        <input id="num" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-xl-4">
+                    <div class="d-flex align-items-center">
+                        <label for="weight" class="form-label flex-shrink-0 mb-0"><span
+                                class="text-danger">*</span>過磅重量(克)：</label>
+                        <input id="weight" type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center gx-3">
+            <div class="col-12 d-flex justify-content-center">
+                <button class="btn btn-quaternary-xdark text-white d-flex justify-content-center rounded-3"
+                    style="width: 92px;">
+                    新增
+                </button>
+            </div>
+        </div>
+
+        <table class="table table-footable table-bordered border-gray-500 mt-4" data-paging="true" data-sorting="false"
+            data-toggle-column="last">
+            <thead>
+                <tr>
+                    <th scope="col" width="50">序</th>
+                    <th scope="col">過磅日期</th>
+                    <th scope="col">每手過磅數量</th>
+                    <th scope="col" data-breakpoints="xs">過磅重量(克)</th>
+                    <th scope="col" data-breakpoints="xs sm" width="180">功能</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">
+                        1
+                    </td>
+                    <td data-th="過磅日期">
+                        2024/10/30
+                    </td>
+                    <td data-th="每手過磅數量">
+                        3
+                    </td>
+                    <td data-th="過磅重量(克)">
+                        5,000
+                    </td>
+                    <td data-th="功能">
+                        <button
+                            class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                            <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row">
+                        2
+                    </td>
+                    <td data-th="過磅日期">
+                        2024/10/30
+                    </td>
+                    <td data-th="每手過磅數量">
+                        3
+                    </td>
+                    <td data-th="過磅重量(克)">
+                        1,000
+                    </td>
+                    <td data-th="功能">
+                        <button
+                            class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                            <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row">
+                        3
+                    </td>
+                    <td data-th="過磅日期">
+                        2024/10/30
+                    </td>
+                    <td data-th="每手過磅數量">
+                        3
+                    </td>
+                    <td data-th="過磅重量(克)">
+                        5,000
+                    </td>
+                    <td data-th="功能">
+                        <button
+                            class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                            <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h4 class="table-header">附件檔案</h4>
+    <table class="table table-rwd table-bordered border-gray-500 mb-4" data-style="twin" data-con="form">
+        <tbody>
+            <tr>
+                <th data-th="" width="190">收雞區域平面圖</th>
+                <td data-th="雞場名稱">
+                    <div class="w-100">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-highlight-xlight rounded-3 w-100 file-btn" id="fileButton" title="選擇檔案">
+                                    <img src="./assets/images/ic-upload.svg" alt="icon" class="me-2">選擇檔案
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th data-th="">契約檔案</th>
+                <td data-th="契約檔案">
+                    <div class="row gy-2">
+                        <div class="col-sm-6">
+                            <div class="type-btn w-100">
+                                <span class="bg-tertiary-bright">DOC</span>
+                                <p class="type-btn-txt">畜禽場與農民禽畜糞再利用合約書</p>
+                                <a href="#" class="type-btn-function ms-auto"><img src="./assets/images/ic-cross.svg"
+                                        alt="icon"></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="type-btn w-100">
+                                <span class="bg-tertiary-bright">DOC</span>
+                                <p class="type-btn-txt">畜禽場與農民禽畜糞再利用合約書</p>
+                                <a href="#" class="type-btn-function ms-auto"><img src="./assets/images/ic-cross.svg"
+                                        alt="icon"></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="type-btn w-100">
+                                <span class="bg-highlight-xdark">PDF</span>
+                                <p class="type-btn-txt">畜禽場與農民禽畜糞再利用合約書</p>
+                                <a href="#" class="type-btn-function ms-auto"><img src="./assets/images/ic-cross.svg"
+                                        alt="icon"></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-highlight-xlight rounded-3 w-100 file-btn" id="fileButton" title="選擇檔案">
+                                <img src="./assets/images/ic-upload.svg" alt="icon" class="me-2">選擇檔案
+                            </button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row justify-content-center mb-5">
+        <div class="col d-flex justify-content-end">
+            <button class="btn btn-primary text-white d-flex justify-content-center rounded-3 me-2" style="width: 170px;">
+                儲存
+            </button>
+            <button class="btn btn-gray-600 text-white d-flex justify-content-center rounded-3 me-2" style="width: 170px;">
+                匯入ERP
+            </button>
+            <button class="btn btn-quaternary-xdark text-white d-flex justify-content-center rounded-3" style="width: 170px;">
+                匯入ERP
+            </button>
+        </div>
+    </div>
+</div>
+					<footer class="js-footer page">
+    <div class="container footer">
+        <a href="#" class="gotop">
+            TOP
+        </a>
+        <div class="w-100 me-4">
+            <div class="d-flex flex-column flex-md-row mb-2">
+                <p class="fs-6">凱馨實業股份有限公司 供貨商銷售管理平台</p>
+                <span class="text-gray-600 ms-md-auto">建議瀏覽器: Google Chrome 、Edge以上</span>
+            </div>
+            <ul class="footer-list mb-3 mb-sm-0">
+                <li class="li footer-list-item"><span>維修廠商｜</span>巨鷗科技股份有限公司</li>
+                <li class="li footer-list-item"><span>系統操作問題｜</span>大鷗科技股份有限公司</li>
+                <li class="li footer-list-item"><span>聯絡窗口｜</span>江哲瑋 (04)22985258 #509</li>
+                <li class="li footer-list-item"><span>信箱｜</span><a href="mailto:mark@geo.com.tw" target="_blank"
+                        class="link-gray-800">mark@geo.com.tw</a></li>
+            </ul>
+        </div>
+        <ul class="footer-link flex-shrink-0 ms-sm-auto me-auto me-sm-0">
+            <li class="me-2"><a href="#" target="_blank" class="footer-link-item">
+                <img src="./assets/images/ic-fb.svg" alt="facebook"></a>
+            </li>
+            <li class="me-2">
+                <a href="#" target="_blank" class="footer-link-item">
+                    <img src="./assets/images/ic-flickr.svg" alt="flickr">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank" class="footer-link-item">
+                    <img src="./assets/images/ic-youtube.svg" alt="youtube">
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
+			</div>
+			<!-----主要內容結束----->
+		</div>
+
+	</body>
+
+</html>

@@ -19691,7 +19691,7 @@ table.footable-editing.footable-editing-always-show button.footable-add {
     .step-card-link.active {
       pointer-events: none; }
       .step-card-link.active:after {
-        background: #EE6805; }
+        background: #ced4da; }
       .step-card-link.active .step-card-img {
         border-color: #fb832b;
         color: #fb832b; }
@@ -19716,7 +19716,9 @@ table.footable-editing.footable-editing-always-show button.footable-add {
     font-size: 1.5rem;
     -webkit-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
-    transition: all 0.2s ease; }
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 10; }
     @media (max-width: 576px) {
       .step-card-img {
         font-size: 1.25rem; } }

@@ -18580,14 +18580,14 @@ hr {
 .table-text {
   display: inline; }
 
-.accordion-item {
+.accordion-page .accordion-item {
   border: none !important;
   border-bottom: 1px solid #ced4da !important;
   border-radius: 0 !important; }
-  .accordion-item:last-child {
+  .accordion-page .accordion-item:last-child {
     border-bottom: none !important; }
 
-.accordion-button {
+.accordion-page .accordion-button {
   background: none !important;
   font-weight: 500;
   font-size: 1.25rem;
@@ -18596,29 +18596,29 @@ hr {
   padding-left: 4px;
   padding-right: 4px; }
   @media (max-width: 768px) {
-    .accordion-button {
+    .accordion-page .accordion-button {
       font-size: 1rem; } }
   @media (max-width: 576px) {
-    .accordion-button {
+    .accordion-page .accordion-button {
       font-size: 0.9rem; } }
-  .accordion-button::after {
+  .accordion-page .accordion-button::after {
     width: 28px;
     height: 28px;
     background: url("../images/ic-content-toggle.svg") left bottom;
     background-size: 100%; }
 
-.accordion-button:not(.collapsed) {
+.accordion-page .accordion-button:not(.collapsed) {
   color: #343a40 !important; }
-  .accordion-button:not(.collapsed):after {
+  .accordion-page .accordion-button:not(.collapsed):after {
     background: url("../images/ic-content-toggle.svg") left top;
     background-size: 100%; }
 
-.accordion-body {
+.accordion-page .accordion-body {
   background: #fff8be;
   border-radius: 8px;
   margin-bottom: 12px; }
   @media (max-width: 768px) {
-    .accordion-body {
+    .accordion-page .accordion-body {
       font-size: 0.9rem; } }
 
 @media (max-width: 768px) {

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="56" viewBox="0 0 28 56">
+  <g id="ic-content-toggle" transform="translate(-11385 -2215)">
+    <g id="common_ic_remov" transform="translate(11385 2215)">
+      <path id="Path_2924" data-name="Path 2924" d="M0,0H28V28H0Z" transform="translate(0)" fill="none"/>
+      <path id="Path_2925" data-name="Path 2925" d="M13.667,2A11.667,11.667,0,1,0,25.333,13.667,11.671,11.671,0,0,0,13.667,2ZM19.5,14.833H7.833V12.5H19.5Z" transform="translate(0.333 0.333)" fill="#30a46a"/>
+    </g>
+    <g id="common_ic_add" transform="translate(11385 2243)">
+      <path id="Path_2922" data-name="Path 2922" d="M0,0H28V28H0Z" fill="none"/>
+      <path id="Path_2923" data-name="Path 2923" d="M14,2A12,12,0,1,0,26,14,12,12,0,0,0,14,2Zm6,13.2H15.2V20H12.8V15.2H8V12.8h4.8V8h2.4v4.8H20Z" transform="translate(0 0)" fill="#30a46a"/>
+    </g>
+  </g>
+</svg>

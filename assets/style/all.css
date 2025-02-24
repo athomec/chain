@@ -16703,11 +16703,15 @@ textarea {
       font-size: 0.9rem !important; } }
 
 .form-check-input {
-  border-color: #adb5bd; }
+  border-color: #6c757d; }
 
 .form-check-input:checked {
-  background-color: #E8D5BF;
-  border-color: #E8D5BF; }
+  background-color: #30A46A;
+  border-color: #30A46A; }
+
+@media (max-width: 768px) {
+  .form-check-label {
+    font-size: 0.9rem !important; } }
 
 select,
 .select2 {
@@ -16839,9 +16843,9 @@ textarea::placeholder {
   padding-right: 32px !important; }
 
 .form-check-inline {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
@@ -16849,7 +16853,8 @@ textarea::placeholder {
     -ms-flex-negative: 0;
         flex-shrink: 0; }
   .form-check-inline .form-check-input {
-    margin-right: 4px; }
+    margin-right: 6px;
+    margin-top: 2px; }
 
 .form-check-input[type="radio"] {
   width: 18px;
@@ -18569,6 +18574,57 @@ hr {
         flex-shrink: 0;
     margin-right: 8px; }
 
+.con-title {
+  margin-bottom: 12px; }
+
+.table-text {
+  display: inline; }
+
+.accordion-item {
+  border: none !important;
+  border-bottom: 1px solid #ced4da !important;
+  border-radius: 0 !important; }
+  .accordion-item:last-child {
+    border-bottom: none !important; }
+
+.accordion-button {
+  background: none !important;
+  font-weight: 500;
+  font-size: 1.25rem;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  padding-left: 4px;
+  padding-right: 4px; }
+  @media (max-width: 768px) {
+    .accordion-button {
+      font-size: 1rem; } }
+  @media (max-width: 576px) {
+    .accordion-button {
+      font-size: 0.9rem; } }
+  .accordion-button::after {
+    width: 28px;
+    height: 28px;
+    background: url("../images/ic-content-toggle.svg") left bottom;
+    background-size: 100%; }
+
+.accordion-button:not(.collapsed) {
+  color: #343a40 !important; }
+  .accordion-button:not(.collapsed):after {
+    background: url("../images/ic-content-toggle.svg") left top;
+    background-size: 100%; }
+
+.accordion-body {
+  background: #fff8be;
+  border-radius: 8px;
+  margin-bottom: 12px; }
+  @media (max-width: 768px) {
+    .accordion-body {
+      font-size: 0.9rem; } }
+
+@media (max-width: 768px) {
+  .form-txt {
+    font-size: 0.9rem; } }
+
 /*
 * FooTable v3 - FooTable is a jQuery plugin that aims to make HTML tables on smaller devices look awesome.
 * @version 3.1.5
@@ -19579,6 +19635,148 @@ table.footable-editing.footable-editing-always-show button.footable-add {
     .link-list-link:hover {
       opacity: 0.8; }
 
+/*-----------------流程樣式---------------------*/
+.step-card {
+  max-width: 714px;
+  margin: 0 auto; }
+  @media (max-width: 1200px) {
+    .step-card {
+      max-width: 600px; } }
+  .step-card li:last-child .step-card-link:after {
+    display: none; }
+  .step-card-link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    pointer-events: none;
+    position: relative;
+    height: 100%; }
+    .step-card-link:after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 170px;
+      height: 5px;
+      left: calc(50% + 20px);
+      top: calc(50% - 20px);
+      background: #ced4da;
+      z-index: 0;
+      pointer-events: none; }
+      @media (max-width: 1200px) {
+        .step-card-link:after {
+          width: 120px; } }
+      @media (max-width: 576px) {
+        .step-card-link:after {
+          width: 100px; } }
+      @media (max-width: 420px) {
+        .step-card-link:after {
+          width: 80px; } }
+    .step-card-link.done {
+      pointer-events: initial; }
+      .step-card-link.done:after {
+        background: #6BDFA5; }
+      .step-card-link.done .step-card-img {
+        border-color: #6BDFA5;
+        color: #6BDFA5; }
+      .step-card-link.done:hover .step-card-img {
+        background: #6BDFA5;
+        color: #fff; }
+    .step-card-link.active {
+      pointer-events: none; }
+      .step-card-link.active:after {
+        background: #EE6805; }
+      .step-card-link.active .step-card-img {
+        border-color: #fb832b;
+        color: #fb832b; }
+      .step-card-link.active p {
+        color: #000; }
+  .step-card-img {
+    width: 46px;
+    height: 46px;
+    border: 4px solid #ced4da;
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background: #fff;
+    color: #ced4da;
+    font-size: 1.5rem;
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease; }
+    @media (max-width: 576px) {
+      .step-card-img {
+        font-size: 1.25rem; } }
+  .step-card-title {
+    color: #6c757d;
+    line-height: 1.2;
+    font-weight: 500; }
+    @media (max-width: 576px) {
+      .step-card-title {
+        font-size: 0.9rem;
+        text-align: center; } }
+    @media (max-width: 420px) {
+      .step-card-title {
+        font-size: 0.8rem; } }
+
+/*-----------------頁籤樣式---------------------*/
+.nav-tabs {
+  border-bottom: none; }
+  .nav-tabs .nav-item {
+    margin-right: 8px; }
+    .nav-tabs .nav-item:last-child {
+      margin-right: 0; }
+  .nav-tabs .nav-link {
+    border-radius: 10px 10px 0 0;
+    background: #EFEFEF;
+    width: 200px;
+    color: #343a40; }
+    @media (max-width: 1200px) {
+      .nav-tabs .nav-link {
+        width: 160px !important; } }
+    @media (max-width: 991px) {
+      .nav-tabs .nav-link {
+        width: auto !important; } }
+    @media (max-width: 576px) {
+      .nav-tabs .nav-link {
+        font-size: 0.9rem; } }
+
+.tab-content {
+  border: 1px solid #dee2e6;
+  border-radius: 0 10px 10px 10px;
+  padding: 16px; }
+
+.nav-sub-link {
+  border: 2px solid #30A46A;
+  color: #30A46A;
+  font-weight: 600;
+  margin-bottom: 8px; }
+  @media (max-width: 576px) {
+    .nav-sub-link {
+      font-size: 0.9rem; } }
+  .nav-sub-link.active {
+    background: #30A46A;
+    color: #fff;
+    border: 2px solid #30A46A; }
+
+.tab-sub-content {
+  border: none;
+  padding: 0;
+  margin-top: -12px; }
+
 /*-----------------按鈕樣式---------------------*/
 .type-btn {
   border-radius: 10px;
@@ -19591,6 +19789,9 @@ table.footable-editing.footable-editing-always-show button.footable-add {
       -ms-flex-align: start;
           align-items: flex-start;
   background: #f8f9fa; }
+  @media (max-width: 576px) {
+    .type-btn {
+      padding: 8px 8px 8px 0; } }
   .type-btn-txt {
     overflow: hidden;
     -o-text-overflow: ellipsis;
@@ -19598,6 +19799,9 @@ table.footable-editing.footable-editing-always-show button.footable-add {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1; }
+    @media (max-width: 576px) {
+      .type-btn-txt {
+        font-size: 0.9rem; } }
   .type-btn-function {
     -ms-flex-negative: 0;
         flex-shrink: 0; }
@@ -19609,6 +19813,9 @@ table.footable-editing.footable-editing-always-show button.footable-add {
     margin-right: 12px;
     -ms-flex-negative: 0;
         flex-shrink: 0; }
+    @media (max-width: 576px) {
+      .type-btn span {
+        font-size: 0.8rem; } }
 
 .file-btn {
   display: -webkit-box;
@@ -19621,7 +19828,12 @@ table.footable-editing.footable-editing-always-show button.footable-add {
       -ms-flex-pack: center;
           justify-content: center;
   border: 2px dashed #EE6805;
-  height: 48px; }
+  height: 48px;
+  border-radius: 10px; }
+  @media (max-width: 576px) {
+    .file-btn {
+      font-size: 0.9rem;
+      height: 40px; } }
   .file-btn:hover {
     border: 2px solid #EE6805; }
   .file-btn img {

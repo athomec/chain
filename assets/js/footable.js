@@ -2762,7 +2762,7 @@
 				self.cascade = F.is.boolean(data.cascade) ? data.cascade : self.cascade;
 				self.o.breakpoints = F.is.hash(data.breakpoints) ? data.breakpoints : self.o.breakpoints;
 				self.getWidth = F.checkFnValue(self, data.getWidth, self.getWidth);
-				if (self.o.breakpoints == null) self.o.breakpoints = { "xs": 480, "sm": 768, "md": 992, "lg": 1200 };
+				if (self.o.breakpoints == null) self.o.breakpoints = { "xs": 480, "sm": 768, "md": 992, "lg": 1200, "xl": 1400 };
 				// Create a nice friendly array to work with out of the breakpoints object.
 				for (var name in self.o.breakpoints) {
 					if (!self.o.breakpoints.hasOwnProperty(name)) continue;

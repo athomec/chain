@@ -94,6 +94,58 @@
 					}
 				};
 				$('#chicken_date_from1, #chicken_date_to1, #chicken_date_from2, #chicken_date_to2').datetimepicker(options);
+
+				//日期區間
+				$(".multi-date").each(function () {
+					let $picker = $(this); // 當前 datepicker 元件
+					let $input = $picker.find("input"); // 內部的 input 欄位
+					let selectingStart = true; // 切換選擇狀態
+					let startDate = null;
+					let endDate = null;
+
+					var multiOptions = {
+						locale: 'zh-tw',
+						format: 'YYYY/MM/DD',
+						icons: {
+							time: "bi bi-clock",
+							date: "bi bi-calendar",
+							up: "bi bi-arrow-up",
+							down: "bi bi-arrow-down",
+							previous: "bi bi-chevron-left",
+							next: "bi bi-chevron-right",
+							today: "bi bi-clock",
+							clear: "bi bi-trash3"
+						},
+						widgetPositioning: {
+							vertical: 'bottom'
+						}
+					};
+
+					// 初始化 datetimepicker
+					$picker.datetimepicker(multiOptions);
+
+					// 監聽日期變更事件
+					$picker.on("change.datetimepicker", function (e) {
+						if (!e.date) return; // 防止 undefined 錯誤
+
+						if (selectingStart) {
+							startDate = e.date.format('YYYY/MM/DD'); // 記錄開始日期
+							selectingStart = false; // 切換狀態
+							$input.val(`${startDate} ~`); // 顯示 "YYYY/MM/DD ~"
+						} else {
+							endDate = e.date.format('YYYY/MM/DD'); // 記錄結束日期
+							if (startDate && endDate) {
+								// 確保開始日期比結束日期早，否則交換
+								if (moment(startDate, "YYYY/MM/DD").isAfter(moment(endDate, "YYYY/MM/DD"))) {
+									[startDate, endDate] = [endDate, startDate];
+								}
+								$input.val(`${startDate} ~ ${endDate}`); // 顯示完整區間
+							}
+							selectingStart = true; // 重置狀態，下一次從頭選擇
+						}
+					});
+				});
+				
 			});
 		</script>
 		<!-----內頁框架開始----->
@@ -115,7 +167,7 @@
 							</h2>
 							<div id="collapse1" class="accordion-collapse collapse " data-bs-parent="#accordionGroup">
 								<div class="accordion-body">
-									<a href="#" class="accordion-link "><img
+									<a href="notice.html" class="accordion-link "><img
 											src="./assets/images/ic-duck.svg" alt="icon">1-1 系統公告</a>
 									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
 											alt="icon">1-2 角色及功能維護</a>

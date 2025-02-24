@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <title>凱馨實業股份有限公司 - 供應鏈產銷管理平台</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="供應鏈產銷管理平台,供應鏈,產銷,應鏈產銷管理,凱馨實業,凱馨">
+    <meta name="description" content="供應鏈產銷管理平台" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta property="og:site_name" content="供應鏈產銷管理平台" />
+    <meta property="og:image" content="assets/images/fb-img.png" />
+    <!--FB分享設定-->
+
+    <link rel="icon" href="assets/images/favicon.svg" type="image/ico" />
+    <!--iconfont設定-->
+    <link rel="stylesheet" href="assets/style/all.css">
+    <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!--css設定-->
+</head>
+
+	<body class="scrollbar">
+		<!-- SCRIPTS -->
+		<script src="assets/js/jquery-3.7.1.min.js"></script>
+		<script src="assets/js/bootstrap.bundle.js"></script>
+		<script src="assets/js/script.js"></script>
+		<script src="assets/js/footable.js"></script>
+		<script src="assets/js/moment-with-locales.min.js"></script>
+		<script src="assets/js/tempusdominus-bootstrap-4.min.js"></script>
+		<script src="assets/js/echarts.js"></script><!--圖表-->
+		<script src="assets/js/index.global.js"></script><!--行事曆-->
+		<script src="assets/js//lunar.js"></script><!--行事曆農曆-->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				window.addEventListener('resize', function () {
+					myChart.resize(); // 重新調整圖表大小
+				});
+
+				function RESIZE() {
+					var WINDOW = $(window).width();
+					if (WINDOW < 992) {
+						$(".js-side-menu").addClass("close");
+						$(".js-side-content").addClass("close");
+						$(".js-navbar").addClass("w-100");
+						$(".js-footer").addClass("w-100");
+					} else {
+						$(".js-side-menu").removeClass("close");
+						$(".js-side-content").removeClass("close");
+						$(".js-navbar").removeClass("w-100");
+						$(".js-footer").removeClass("w-100");
+					}
+				}
+
+				// Initial call
+				RESIZE();
+
+				$(window).resize(function () {
+					RESIZE();
+				});
+				//表格功能
+				 $('.table-footable').footable({
+					"paging": {
+						"enabled": true,
+						"size": 3,
+					},
+					"sorting": {
+						"enabled": true
+					}
+				});
+
+				//拖曳功能
+				$(".js-draggable").draggable();
+				//日期功能
+				var options = {
+					locale: 'zh-tw',
+					defaultDate: new Date(),
+					format: 'L',
+					icons: {
+						time: "bi bi-clock",
+						date: "bi bi-calendar",
+						up: "bi bi-arrow-up",
+						down: "bi bi-arrow-down",
+						previous: "bi bi-chevron-left",
+						next: "bi bi-chevron-right",
+						today: "bi bi-clock",
+						clear: "bi bi-trash3"
+					},
+					widgetPositioning: {
+						vertical: 'bottom',
+					}
+				};
+				$('#chicken_date_from1, #chicken_date_to1, #chicken_date_from2, #chicken_date_to2').datetimepicker(options);
+
+				//日期區間
+				$(".multi-date").each(function () {
+					let $picker = $(this); // 當前 datepicker 元件
+					let $input = $picker.find("input"); // 內部的 input 欄位
+					let selectingStart = true; // 切換選擇狀態
+					let startDate = null;
+					let endDate = null;
+
+					var multiOptions = {
+						locale: 'zh-tw',
+						format: 'YYYY/MM/DD',
+						icons: {
+							time: "bi bi-clock",
+							date: "bi bi-calendar",
+							up: "bi bi-arrow-up",
+							down: "bi bi-arrow-down",
+							previous: "bi bi-chevron-left",
+							next: "bi bi-chevron-right",
+							today: "bi bi-clock",
+							clear: "bi bi-trash3"
+						},
+						widgetPositioning: {
+							vertical: 'bottom'
+						}
+					};
+
+					// 初始化 datetimepicker
+					$picker.datetimepicker(multiOptions);
+
+					// 監聽日期變更事件
+					$picker.on("change.datetimepicker", function (e) {
+						if (!e.date) return; // 防止 undefined 錯誤
+
+						if (selectingStart) {
+							startDate = e.date.format('YYYY/MM/DD'); // 記錄開始日期
+							selectingStart = false; // 切換狀態
+							$input.val(`${startDate} ~`); // 顯示 "YYYY/MM/DD ~"
+						} else {
+							endDate = e.date.format('YYYY/MM/DD'); // 記錄結束日期
+							if (startDate && endDate) {
+								// 確保開始日期比結束日期早，否則交換
+								if (moment(startDate, "YYYY/MM/DD").isAfter(moment(endDate, "YYYY/MM/DD"))) {
+									[startDate, endDate] = [endDate, startDate];
+								}
+								$input.val(`${startDate} ~ ${endDate}`); // 顯示完整區間
+							}
+							selectingStart = true; // 重置狀態，下一次從頭選擇
+						}
+					});
+				});
+				
+			});
+		</script>
+		<!-----內頁框架開始----->
+		<div class="d-flex">
+			<!-----側邊選單開始----->
+			<div class="side-menu js-side-menu" id="side-menu">
+				<button class="btn side-menu-toggler js-side-menu-toggler js-map-inside-toggler d-none d-lg-flex"
+					type="button">
+					<img src="./assets/images/ic-chevron-left.svg" alt="導引列表icon">
+				</button>
+				<div class="side-menu-body scroll">
+					<div class="accordion" id="accordionGroup">
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button " type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse1">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 系統管理
+								</button>
+							</h2>
+							<div id="collapse1" class="accordion-collapse collapse collapsed show" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="notice.html" class="accordion-link active"><img
+											src="./assets/images/ic-duck.svg" alt="icon">1-1 系統公告</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-2 角色及功能維護</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-3 帳號管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-4 系統 log 紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-5 廠商資料查詢</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-6 客戶資料查詢</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-7 商品資料查詢</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">1-8 設備儀器監控管理</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse2">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 契養戶專區
+								</button>
+							</h2>
+							<div id="collapse2" class="accordion-collapse collapse " data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-1 入雛資料管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-2 種雞場飼養紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-3 商用雞場飼養紀錄</a>
+									<a href="weighing.html" class="accordion-link "><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-4 商用雞場秤重紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-5 飼養環境紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-6 飼料管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-7 商品訂單管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">2-8 農場飼養分析</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse3">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 電宰管理
+								</button>
+							</h2>
+							<div id="collapse3" class="accordion-collapse collapse " data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="calendar.html" class="accordion-link "><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-1 契養戶收雞排程設定</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-2 毛雞車作業管理</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-3 每日生產資訊</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-4 各品級數量紀錄</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-5 全雞分級分析</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-6 能源管理看板統計</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-7 契養戶收雞排程設定</a>
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">3-8 毛雞車作業管理</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse4">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 銷售數據報表
+								</button>
+							</h2>
+							<div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">4-1 銷售數據報表</a>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapse5">
+									<img src="./assets/images/ic-egg.svg" alt="icon" class="me-2"> 視覺觀察板
+								</button>
+							</h2>
+							<div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionGroup">
+								<div class="accordion-body">
+									<a href="#" class="accordion-link"><img src="./assets/images/ic-duck.svg"
+											alt="icon">5-1 視覺觀察板</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-----側邊選單結束----->
+			<!-----主要內容開始----->
+			<div class="side-content js-side-content">
+				<header>
+					<nav class="navbar navbar-expand-lg fixed-top bg-white js-navbar">
+						<div class="container-fluid px-0 justify-content-start">
+							<a class="navbar-brand d-flex" href="index.html">
+								<img src="./assets/images/logo.svg" alt="logo" class="navbar-brand-logo">
+								<p class="navbar-brand-title">供應鏈產銷管理平台</p>
+							</a>
+							<button class="navbar-toggler border-0 px-1 js-side-menu-toggler" type="button" data-target="#side-menu">
+								<img src="./assets/images/ic-bar.svg" alt="選單">
+							</button>
+							<ul class="navbar-nav flex-row ms-auto">
+								<li class="nav-item fw-medium">
+									<a href="#" class="nav-link border-1 border-end border-gray-400 pe-3 me-3"><img
+											src="./assets/images/ic-service.svg" alt="icon" class="me-1">客服填報</a>
+								</li>
+								<li class="nav-item me-2 me-lg-3 fw-medium">
+									Aske123456，您好
+								</li>
+								<li class="nav-item">
+									<a class="btn btn-outline-primary btn-sm rounded-3 fw-bold flex-shrink-0 px-3 px-xl-4 py-0"
+										href="login.html" title="登出">登出</a>
+								</li>
+							</ul>
+						</div>
+					</nav>
+				</header>
+				<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+        <li class="breadcrumb-item"><a href="#">養戶專區</a></li>
+        <li class="breadcrumb-item"><a href="#">入雛資料管理</a></li>
+        <li class="breadcrumb-item active">新增入雛資料</li>
+    </ol>
+</nav>
+
+<div class="container">
+    <h3 class="main-title">系統公告</h3>
+    <ul class="step-card row gx-2 mb-4">
+        <li class="col">
+            <a href="index.html" class="step-card-link done">
+                <div class="step-card-img mb-2">
+                    1
+                </div>
+                <p class="step-card-title">選擇<br class="d-inline d-sm-none">變更計畫</p>
+            </a>
+        </li>
+        <li class="col">
+            <a href="chemical.html" class="step-card-link done">
+                <div class="step-card-img mb-2">
+                    2
+                </div>
+                <p class="step-card-title">輸入<br class="d-inline d-sm-none">變更內容</p>
+            </a>
+        </li>
+        <li class="col">
+            <a href="others.html" class="step-card-link active">
+                <div class="step-card-img mb-2">
+                    3
+                </div>
+                <p class="step-card-title">上傳簽呈</p>
+            </a>
+        </li>
+        <li class="col">
+            <a href="floor.html" class="step-card-link">
+                <div class="step-card-img mb-2">
+                    4
+                </div>
+                <p class="step-card-title">完成</p>
+            </a>
+        </li>
+    </ul>
+
+    <h4 class="table-header">填寫表單</h4>
+
+    <div class="border border-primary bg-white p-3 p-xl-5 mb-5">
+        <h5 class="con-title">複選項目</h5>
+        <div class="mb-4">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1">專案管考平台</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" checked>
+                <label class="form-check-label" for="inlineCheckbox2">專案管考平台</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                <label class="form-check-label" for="inlineCheckbox3">專案管考平台</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
+                <label class="form-check-label" for="inlineCheckbox4">專案管考平台</label>
+            </div>
+        </div>
+
+        <h5 class="con-title">單選項目</h5>
+        <div class="mb-4">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"
+                    checked>
+                <label class="form-check-label" for="inlineRadio1">專案管考平台</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                    value="option2">
+                <label class="form-check-label" for="inlineRadio2">專案管考平台</label>
+            </div>
+        </div>
+
+        <h5 class="con-title">小段小段</h5>
+        <div class="row gy-2 align-items-center mb-4">
+            <div class="col-12 col-sm-auto d-flex align-items-center">
+                <select class="form-select me-2 w-mobile-lg-100" style="width: 125px;">
+                    <option selected>高雄市</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <span class="form-txt flex-shrink-0">縣市</span>
+            </div>
+            <div class="col-12 col-sm-auto d-flex align-items-center">
+                <select class="form-select me-2 w-mobile-lg-100" style="width: 125px;">
+                    <option selected>行政區</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <span class="form-txt flex-shrink-0">行政區</span>
+            </div>
+            <div class="col-12 col-sm-auto d-flex align-items-center">
+                <select class="form-select me-2 w-mobile-lg-100">
+                    <option selected>小段小段小段</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <span class="form-txt flex-shrink-0">小段小段</span>
+            </div>
+            <div class="col-12 col-sm-auto d-flex align-items-center">
+                <input type="text" class="form-control me-2 w-mobile-lg-100" value="12345678">
+                <span class="form-txt flex-shrink-0">地號</span>
+            </div>
+        </div>
+
+        <h5 class="con-title">附件</h5>
+        <div class="row mb-4">
+            <div class="col-sm-6">
+                <button class="btn btn-highlight-xlight w-100 file-btn" id="fileButton" title="選擇檔案">
+                    <img src="./assets/images/ic-upload.svg" alt="icon" class="me-2">選擇檔案
+                </button>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <h5 class="con-title">複選附件</h5>
+                <div class="type-btn w-100 mb-2">
+                    <span class="bg-tertiary-bright">DOC</span>
+                    <p class="type-btn-txt">二期高教深耕計畫第一年(112年)</p>
+                    <a href="#" class="type-btn-function ms-auto"><img src="./assets/images/ic-cross.svg"
+                            alt="icon"></a>
+                </div>
+                <div class="type-btn w-100 mb-2">
+                    <span class="bg-highlight-xdark">PDF</span>
+                    <p class="type-btn-txt">二期高教深耕計畫第一年(112年)</p>
+                    <a href="#" class="type-btn-function ms-auto"><img src="./assets/images/ic-cross.svg"
+                            alt="icon"></a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h5 class="con-title">單選附件</h5>
+                <div class="type-btn w-100 mb-2">
+                    <span class="bg-primary-dark">XLS</span>
+                    <p class="type-btn-txt">二期高教深耕計畫第一年(112年)</p>
+                    <a href="#" class="type-btn-function ms-auto"><img src="./assets/images/ic-cross.svg"
+                            alt="icon"></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-highlight-xlight w-100 file-btn mb-4" id="fileButton" title="選擇檔案">
+                    <img src="./assets/images/ic-upload.svg" alt="icon" class="me-2">選擇檔案
+                </button>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
+                    type="button" role="tab">標籤1</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
+                    type="button" role="tab">標籤2</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane"
+                    type="button" role="tab">標籤3</button>
+            </li>
+        </ul>
+        <div class="tab-content mb-4" id="myTabContent">
+            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+                tabindex="0">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="btn nav-sub-link active" data-bs-toggle="tab" data-bs-target="#sub1"
+                            type="button" role="tab">細項標籤</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="btn nav-sub-link" data-bs-toggle="tab" data-bs-target="#sub2" type="button"
+                            role="tab">細項標籤</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="btn nav-sub-link" data-bs-toggle="tab" data-bs-target="#sub3" type="button"
+                            role="tab">細項標籤</button>
+                    </li>
+                </ul>
+                <div class="tab-content tab-sub-content">
+                    <div class="tab-pane fade show active" id="sub1" role="tabpanel" tabindex="0">
+                        <table class="table table-footable table-bordered border-gray-500 mt-4" data-paging="true"
+                            data-sorting="false" data-toggle-column="last">
+                            <thead>
+                                <tr>
+                                    <th scope="col" width="100">小標之一</th>
+                                    <th scope="col" width="100">小標之一</th>
+                                    <th scope="col" data-breakpoints="xs sm md">小標之一</th>
+                                    <th scope="col" data-breakpoints="xs sm md" width="100">小標之一</th>
+                                    <th scope="col" data-breakpoints="xs sm md lg" width="100">小標之一</th>
+                                    <th scope="col" data-breakpoints="xs sm md lg" width="200">功能</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        <p class="table-text">內容內容內容內容內容內容內容內容容內容內容內容內容</p>
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="功能">
+                                        <button
+                                            class="btn btn-special d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                                            <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                                        </button>
+                                        <button
+                                            class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                                            <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        <p class="table-text">內容內容內容內容內容內容內容內容容內容內容內容內容</p>
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="功能">
+                                        <button
+                                            class="btn btn-special d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                                            <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                                        </button>
+                                        <button
+                                            class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                                            <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        <p class="table-text">內容內容內容內容內容內容內容內容容內容內容內容內容</p>
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="功能">
+                                        <button
+                                            class="btn btn-special d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                                            <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                                        </button>
+                                        <button
+                                            class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                                            <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        <p class="table-text">內容內容內容內容內容內容內容內容容內容內容內容內容</p>
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="功能">
+                                        <button
+                                            class="btn btn-special d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                                            <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                                        </button>
+                                        <button
+                                            class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                                            <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        <p class="table-text">內容內容內容內容內容內容內容內容容內容內容內容內容</p>
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="功能">
+                                        <button
+                                            class="btn btn-special d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                                            <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                                        </button>
+                                        <button
+                                            class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                                            <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        <p class="table-text">內容內容內容內容內容內容內容內容容內容內容內容內容</p>
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="小標之一">
+                                        內容內容
+                                    </td>
+                                    <td data-th="功能">
+                                        <button
+                                            class="btn btn-special d-inline-flex rounded-3 align-items-center py-1 me-1 mb-2 mb-sm-0">
+                                            <img src="./assets/images/ic-edit.svg" alt="icon" class="me-1">編輯
+                                        </button>
+                                        <button
+                                            class="btn btn-danger-light d-inline-flex rounded-3 align-items-center py-1 mb-2 mb-sm-0">
+                                            <img src="./assets/images/ic-trash.svg" alt="icon" class="me-1">刪除
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="table-page-info fs-7">
+                            共 120筆，每頁顯示<input type="text" class="form-control form-control-sm mx-2 py-0 text-center"
+                                value="10" style="width:58px;min-height: 20px;">筆
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="sub2" role="tabpanel" tabindex="0">...
+                    </div>
+                    <div class="tab-pane fade" id="sub3" role="tabpanel" tabindex="0">...
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                ...
+            </div>
+            <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+                ...
+            </div>
+            <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab"
+                tabindex="0">...
+            </div>
+        </div>
+
+        <h5 class="con-title">多行欄位</h5>
+        <textarea class="form-control border-primary mb-4" id="exampleFormControlTextarea1"
+            rows="4">凱馨公司在董事長鄧進得先生邀集產業有識人士設立之初，即以提升產業水準，回應現代化消費需求為出發點；更有感於國人在生活水平邁入已開發國家之林的過程中，在食的安全及傳統美味兩者兼具的腳步卻明顯無法跟上，所以明確設定公司營運之願景，希望公司所有同仁的努力能夠帶給消費者及公司全體同仁一個『活力、健康的便利生活』。</textarea>
+
+        <h5 class="con-title">單個欄位</h5>
+        <div class="row mb-4">
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="單行文字輸入框">
+            </div>
+        </div>
+
+        <h5 class="con-title">複合欄位</h5>
+        <div class="row gy-4 mb-4">
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="單行文字輸入框">
+            </div>
+            <div class="col-sm-6">
+                <div class="input-group date multi-date" id="multi-date" data-target-input="nearest">
+                    <input type="text" class="form-control datetimepicker-input border-end-0 pe-0" id="multi-date-input" placeholder="請選擇日期區間">
+                    <div class="input-group-append" data-toggle="datetimepicker" data-target="#multi-date">
+                        <button class="btn input-group-text" title="日期" value="日期">
+                            <img src="./assets/images/ic-calendar.svg" alt="icon">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="input-group date multi-date" id="multi-date1" data-target-input="nearest">
+                    <input type="text" class="form-control datetimepicker-input border-end-0 pe-0" id="multi-date-input1" placeholder="請選擇日期區間">
+                    <div class="input-group-append" data-toggle="datetimepicker" data-target="#multi-date1">
+                        <button class="btn input-group-text" title="日期" value="日期">
+                            <img src="./assets/images/ic-calendar.svg" alt="icon">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="border border-gray-400 rounded-3 py-2 px-2 px-md-4">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    何謂履歷生產？土雞可以做到履歷生產嗎？
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                <div class="accordion-body p-3 p-md-4">
+                                    履歷生產就是從生產、運輸、銷售到消費者手中，整個過程都具有可追蹤的功能。消費者可經由查詢產銷履歷號碼，得知生產者的基本資料及完整的栽種、生產過程，讓消費者買的安全，吃的安心。<br>
+                                    土雞可以做到履歷生產嗎？
+                                    以凱馨為例，凱馨為農委會良好農業規範的示範電宰廠，目前和凱馨有簽約的契養戶，均有將整個飼養過程記錄於【凱馨毛雞飼養管理紀錄表】，電宰廠及加工廠均經CAS及HACCP的認證，所以凱馨的每一項產品均可以經由商品上的條碼追蹤回我們的牧場的那批雞隻的相關資料。包括：飼養人、小雞的來源、何時入雛、何種雞種、吃什麼飼料、何時打預防針、飼養密度多大、何時投藥、何時準備屠宰、雞隻大小規格…等等。<br>
+                                    如欲知更進一步的介紹，請至凱馨公司首頁「履歷生產」或農委會查詢
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    申辦流程相關資訊
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    申辦流程相關資訊
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    申辦流程相關資訊
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    申辦流程相關資訊
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col d-flex justify-content-end">
+                <button class="btn btn-primary text-white d-flex justify-content-center rounded-3 me-2"
+                    style="width: 170px;">
+                    上一步
+                </button>
+                <button class="btn btn-primary text-white d-flex justify-content-center rounded-3 me-2"
+                    style="width: 170px;">
+                    下一步
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+					<footer class="js-footer page">
+    <div class="container footer">
+        <a href="#" class="gotop">
+            TOP
+        </a>
+        <div class="w-100 me-4">
+            <div class="d-flex flex-column flex-md-row mb-2">
+                <p class="fs-6">凱馨實業股份有限公司 供貨商銷售管理平台</p>
+                <span class="text-gray-600 ms-md-auto">建議瀏覽器: Google Chrome 、Edge以上</span>
+            </div>
+            <ul class="footer-list mb-3 mb-sm-0">
+                <li class="li footer-list-item"><span>維修廠商｜</span>巨鷗科技股份有限公司</li>
+                <li class="li footer-list-item"><span>系統操作問題｜</span>大鷗科技股份有限公司</li>
+                <li class="li footer-list-item"><span>聯絡窗口｜</span>江哲瑋 (04)22985258 #509</li>
+                <li class="li footer-list-item"><span>信箱｜</span><a href="mailto:mark@geo.com.tw" target="_blank"
+                        class="link-gray-800">mark@geo.com.tw</a></li>
+            </ul>
+        </div>
+        <ul class="footer-link flex-shrink-0 ms-sm-auto me-auto me-sm-0">
+            <li class="me-2"><a href="#" target="_blank" class="footer-link-item">
+                <img src="./assets/images/ic-fb.svg" alt="facebook"></a>
+            </li>
+            <li class="me-2">
+                <a href="#" target="_blank" class="footer-link-item">
+                    <img src="./assets/images/ic-flickr.svg" alt="flickr">
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank" class="footer-link-item">
+                    <img src="./assets/images/ic-youtube.svg" alt="youtube">
+                </a>
+            </li>
+        </ul>
+    </div>
+</footer>
+			</div>
+			<!-----主要內容結束----->
+		</div>
+
+	</body>
+
+</html>
